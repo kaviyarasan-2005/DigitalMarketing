@@ -208,7 +208,8 @@ nav {
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
-    padding: 0.5rem 0.75rem;
+    padding: 0.25rem 0.5rem;
+    margin-right: 10px;
     cursor: pointer;
     transition: all var(--transition-fast);
     color: var(--text-primary);
@@ -867,4 +868,38 @@ tr:hover {
 }
 .dashboard-body{
     margin-top: 40px;
+}
+/* Dropdown Container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Hide dropdown by default */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 150px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Dropdown links */
+.dropdown-menu li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
 }

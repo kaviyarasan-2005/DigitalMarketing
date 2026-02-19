@@ -7,7 +7,7 @@ function initRTLToggle() {
     html.setAttribute('dir', currentDir);
     
     if (rtlToggle) {
-        rtlToggle.textContent = currentDir === 'rtl' ? 'LTR' : 'RTL';
+        // rtlToggle.textContent = currentDir === 'rtl' ? 'LTR' : 'RTL';
         
         rtlToggle.addEventListener('click', () => {
             const dir = html.getAttribute('dir');
@@ -15,7 +15,7 @@ function initRTLToggle() {
             
             html.setAttribute('dir', newDir);
             localStorage.setItem('direction', newDir);
-            rtlToggle.textContent = newDir === 'rtl' ? 'LTR' : 'RTL';
+            // rtlToggle.textContent = newDir === 'rtl' ? 'LTR' : 'RTL';
          
         });
     }
