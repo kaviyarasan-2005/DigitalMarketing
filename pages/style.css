@@ -1,14 +1,4 @@
 
-        [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-card: #1e293b;
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --text-muted: #64748b;
-            --border-color: #334155;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -29,14 +19,11 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
-        /* /* .nav-links {
-     */
         .nav-controls {
             display: flex;
             gap: 15px;
             align-items: center;
-        } */
+        } 
 
         .theme-toggle, .rtl-toggle {
             background: var(--bg-secondary);
@@ -112,13 +99,14 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             min-height: 100vh;
+            margin-bottom: 0px;
             position: relative;
             margin: 0px;
             /* margin-top: 80px; */
         }
 
         .hero-left {
-            padding: 120px 80px;
+            padding: 0px 80px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -841,7 +829,7 @@ header {
     border-bottom: 1px solid var(--border-color);
     backdrop-filter: blur(10px);
     transition: all var(--transition-base);
-    
+    /* margin-bottom: 20px; */
 }
 
 header.scrolled {
