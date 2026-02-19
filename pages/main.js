@@ -215,7 +215,7 @@ function initPasswordToggle() {
         const wrapper = input.parentElement;
         const toggle = document.createElement('button');
         toggle.type = 'button';
-        toggle.textContent = '👁️';
+        // toggle.textContent = '👁️';
         toggle.style.cssText = `
             position: absolute;
             right: 15px;
@@ -234,7 +234,7 @@ function initPasswordToggle() {
         toggle.addEventListener('click', () => {
             const type = input.type === 'password' ? 'text' : 'password';
             input.type = type;
-            toggle.textContent = type === 'password' ? '👁️' : '🙈';
+            // toggle.textContent = type === 'password' ? '👁️' : '🙈';
         });
         
         wrapper.appendChild(toggle);

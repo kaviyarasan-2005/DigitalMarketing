@@ -15,7 +15,6 @@
     --color-success: #10b981;
     --color-warning: #f59e0b;
     --color-danger: #ef4444;
-    
     --gradient-primary: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
     --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
     --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
@@ -153,7 +152,7 @@ nav {
     font-family: var(--font-heading);
     font-size: 1.75rem;
     font-weight: 900;
-    background: var(--gradient-primary);
+    background: var(--color-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -249,6 +248,7 @@ nav {
 }
 
 .btn-primary:hover {
+    color: white;
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
 }
@@ -448,6 +448,14 @@ section {
 
 .form-group {
     margin-bottom: var(--spacing-md);
+}
+.team-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto var(--spacing-md);
+    display: block;
 }
 
 .form-label {
@@ -869,13 +877,12 @@ tr:hover {
 .dashboard-body{
     margin-top: 40px;
 }
-/* Dropdown Container */
+
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
-/* Hide dropdown by default */
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -885,9 +892,9 @@ tr:hover {
     margin: 0;
     min-width: 150px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1000; /* Add this */
 }
 
-/* Dropdown links */
 .dropdown-menu li a {
     display: block;
     padding: 10px;
@@ -899,7 +906,6 @@ tr:hover {
     background-color: #f1f1f1;
 }
 
-/* Show dropdown on hover */
 .dropdown:hover .dropdown-menu {
     display: block;
 }
