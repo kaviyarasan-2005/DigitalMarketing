@@ -1,246 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn about DigiBoost - your trusted partner in digital marketing and SEO excellence">
-    <title>About Us - DigiBoost</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us – DigiBoost</title>
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .page-hero {
+      padding: 140px 0 80px;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse 70% 50% at 30% 50%, rgba(0,212,255,0.1) 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 40% at 80% 20%, rgba(255,77,106,0.08) 0%, transparent 60%);
+    }
+
+    .page-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .page-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 20px; }
+    .page-hero p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 32px; }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .team-mosaic {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 12px;
+    }
+
+    .mosaic-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+    }
+
+    .mosaic-card.tall { grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
+    .mosaic-avatar { font-size: 3rem; margin-bottom: 10px; }
+    .mosaic-name { font-weight: 700; font-size: 0.95rem; }
+    .mosaic-role { color: var(--text-muted); font-size: 0.8rem; }
+
+    /* Values */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .value-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .value-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+    }
+
+    .value-card:nth-child(1)::after { background: var(--grad1); }
+    .value-card:nth-child(2)::after { background: var(--grad2); }
+    .value-card:nth-child(3)::after { background: var(--grad3); }
+    .value-card:nth-child(4)::after { background: linear-gradient(135deg, #7B5EA7, #FF4D6A); }
+
+    .value-card:hover { transform: translateY(-4px); }
+
+    .value-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.05);
+      position: absolute;
+      top: 12px; right: 20px;
+    }
+
+    .value-icon { font-size: 2rem; margin-bottom: 16px; }
+    .value-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .value-card p { color: var(--text-muted); font-size: 0.875rem; }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 40px; }
+    .rtl .timeline { padding-left: 0; padding-right: 40px; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 12px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2));
+    }
+
+    .rtl .timeline::before { left: auto; right: 12px; }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 40px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -34px; top: 6px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--primary);
+    }
+
+    .rtl .timeline-item::before { left: auto; right: -34px; }
+
+    .t-year {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .t-title { font-weight: 700; margin-bottom: 6px; }
+    .t-desc { color: var(--text-muted); font-size: 0.875rem; }
+
+    /* Team Section */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .team-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .team-card:hover { transform: translateY(-6px); border-color: rgba(255,77,106,0.3); }
+    .team-emoji { font-size: 3.5rem; margin-bottom: 12px; }
+    .team-name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+    .team-role { color: var(--accent); font-size: 0.8rem; font-weight: 600; margin-bottom: 8px; }
+    .team-bio { color: var(--text-muted); font-size: 0.8rem; }
+
+    @media (max-width: 768px) {
+      .page-hero-inner { grid-template-columns: 1fr; }
+      .about-visual { display: none; }
+      .timeline { padding-left: 24px; }
+      .timeline-item::before { left: -18px; }
+    }
+  </style>
 </head>
 <body>
-    
-    <header>
-             <nav>
-            <a href="index.html" class="logo">DigiBoost</a>
-            <ul class="nav-links">
-                <li class="dropdown">
-    <a href="#">Home ▾</a>
-    <ul class="dropdown-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index2.html">Home 2</a></li>
-    </ul>
-</li>
-                <!-- <li><a href="index.html">Home</a></li>
-                <li><a href="index2.html">Home2</a></li> -->
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="case-studies.html">Case Studies</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <!-- <li><a href="admin-dashboard.html">admin</a></li>
-                <li><a href="user-dashboard.html">user</a></li> -->
-                 <li class="dropdown">
-    <a href="#">Dashboard ▾</a>
-    <ul class="dropdown-menu">
-        <li><a href="user-dashboard.html">user</a></li>
-        <li><a href="admin-dashboard.html">admin</a></li>
-    </ul>
-</li>
-                <li><a href="login.html">Login</a></li>
-            </ul>
-            <div class="nav-controls">
-                <button class="rtl-toggle">🌍</button>
-                <button class="mobile-menu-toggle">☰</button>
-            </div>
-        </nav>
-    </header>
 
-    <section class="hero" style="padding: 120px 0 80px;">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">About DigiBoost</div>
-                <h1>Driving Digital Excellence <span class="gradient-text">Since 2015</span></h1>
-                <p style="max-width: 700px; margin: 0 auto;">We're a team of passionate digital marketers, SEO experts, and growth strategists dedicated to helping businesses thrive in the digital age.</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container-sm">
-            <div class="section-header">
-                <div class="section-badge">Our Story</div>
-                <h2>How It All Started</h2>
-            </div>
-            <div style="max-width: 800px; margin: 0 auto;">
-                <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: var(--spacing-lg);">
-                    DigiBoost was founded in 2015 with a simple mission: to democratize digital marketing and make world-class SEO strategies accessible to businesses of all sizes. What started as a small team of three has grown into a powerhouse agency serving over 500 clients worldwide.
-                </p>
-                <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: var(--spacing-lg);">
-                    Our founders, frustrated with the black-box approach of traditional agencies, set out to create a different kind of marketing partner—one that prioritizes transparency, education, and measurable results. Today, we're proud to be one of the fastest-growing digital marketing agencies in the industry.
-                </p>
-                <p style="font-size: 1.125rem; line-height: 1.8; color: var(--text-secondary);">
-                    We believe in the power of data-driven strategies, continuous learning, and genuine partnerships with our clients. When you succeed, we succeed—and that philosophy drives everything we do.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Our Values</div>
-                <h2>What We Stand For</h2>
-            </div>
-            <div class="grid grid-3">
-                <div class="card">
-                    <h3>🎯 Results-Driven</h3>
-                    <p>We measure success by your ROI, not vanity metrics. Every strategy is designed to deliver tangible business outcomes.</p>
-                </div>
-                <div class="card">
-                    <h3>🔍 Transparency</h3>
-                    <p>No smoke and mirrors. We provide clear reporting, honest communication, and full visibility into our work.</p>
-                </div>
-                <div class="card">
-                    <h3>💡 Innovation</h3>
-                    <p>We stay ahead of industry trends and continuously adapt our strategies to leverage the latest opportunities.</p>
-                </div>
-                <div class="card">
-                    <h3>🤝 Partnership</h3>
-                    <p>We don't just work for you; we work with you. Your success is our success, and we're invested in your growth.</p>
-                </div>
-                <div class="card">
-                    <h3>📚 Education</h3>
-                    <p>We empower our clients with knowledge, helping you understand the 'why' behind every recommendation.</p>
-                </div>
-                <div class="card">
-                    <h3>⚡ Excellence</h3>
-                    <p>We hold ourselves to the highest standards and never settle for "good enough" when great is possible.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Our Team</div>
-                <h2>Meet The Experts</h2>
-                <p>Talented professionals dedicated to your success</p>
-            </div>
-           <div class="grid grid-3">
-    
-    <div class="card" style="text-align: center;">
-        <img src="assets/ceo.jpg" alt="Alex Rivera"
-             style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin: 0 auto var(--spacing-md); display: block;">
-        <h3>Alex Rivera</h3>
-        <p style="color: var(--color-primary); font-weight: 600; margin-bottom: var(--spacing-sm);">
-            CEO & Founder
-        </p>
-        <p>15+ years in digital marketing. Former Google strategist with a passion for data-driven growth.</p>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand"><div class="brand-icon">⚡</div>DigiBoost</a>
+      <nav><ul class="nav-links">
+        <li class="nav-dropdown"><a href="#">🏠 Home</a>
+          <div class="dropdown-menu">
+            <a href="index.html" class="dd-home1"><span class="dd-icon">🌟</span> Home 1 – Bold</a>
+            <a href="index2.html" class="dd-home2"><span class="dd-icon">🌊</span> Home 2 – Minimal</a>
+          </div>
+        </li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-dropdown"><a href="#">📊 Dashboard</a>
+          <div class="dropdown-menu">
+            <a href="user-dashboard.html" class="dd-user"><span class="dd-icon">👤</span> User Dashboard</a>
+            <a href="admin-dashboard.html" class="dd-admin"><span class="dd-icon">🛡</span> Admin Dashboard</a>
+          </div>
+        </li>
+      </ul></nav>
+      <div class="header-actions">
+        <button class="btn-rtl" id="rtl-btn" onclick="toggleRTL()" title="Toggle RTL/LTR">🌐</button>
+        <a href="login.html"><button class="btn-outline">Log In</button></a>
+        <a href="signup.html"><button class="btn-primary">Get Started</button></a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </div>
     </div>
+  </header>
 
-    <div class="card" style="text-align: center;">
-        <img src="assets/grl.jpg" alt="Sarah Thompson"
-             style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin: 0 auto var(--spacing-md); display: block;">
-        <h3>Sarah Thompson</h3>
-        <p style="color: var(--color-primary); font-weight: 600; margin-bottom: var(--spacing-sm);">
-            Head of SEO
-        </p>
-        <p>Technical SEO expert who's helped 200+ websites dominate their niches in competitive markets.</p>
+  <nav class="mobile-nav">
+    <a href="index.html">🏠 Home 1</a><a href="index2.html">🏠 Home 2</a>
+    <a href="about.html">About</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a>
+    <a href="case-studies.html">Case Studies</a><a href="contact.html">Contact</a>
+    <a href="user-dashboard.html">👤 User Dashboard</a><a href="admin-dashboard.html">🛡 Admin</a>
+    <a href="login.html">Log In</a><a href="signup.html">Get Started</a>
+  </nav>
+
+  <div class="page-wrap">
+
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-inner">
+          <div>
+            <div class="badge badge-accent" style="margin-bottom:20px;">Our Story</div>
+            <h1>We're the Agency<br>Behind <span class="gradient-text">Digital Legends</span></h1>
+            <p>Since 2014, DigiBoost has helped over 500 companies dominate their markets. We're not just marketers — we're growth obsessives who treat your business like our own.</p>
+            <a href="contact.html"><button class="btn-lg btn-primary-lg">Work With Us</button></a>
+          </div>
+          <div class="about-visual">
+            <div class="team-mosaic">
+              <div class="mosaic-card tall" style="background:linear-gradient(135deg,rgba(255,77,106,0.15),rgba(255,140,66,0.1));">
+                <div class="mosaic-avatar">👨‍💼</div>
+                <div class="mosaic-name">Alex Carter</div>
+                <div class="mosaic-role">CEO & Founder</div>
+              </div>
+              <div class="mosaic-card" style="background:linear-gradient(135deg,rgba(0,212,255,0.12),transparent);">
+                <div class="mosaic-avatar">👩‍💻</div>
+                <div class="mosaic-name">Priya Shah</div>
+                <div class="mosaic-role">Head of SEO</div>
+              </div>
+              <div class="mosaic-card" style="background:linear-gradient(135deg,rgba(255,184,0,0.1),transparent);">
+                <div class="mosaic-avatar">👨‍🎨</div>
+                <div class="mosaic-name">Marcus Lee</div>
+                <div class="mosaic-role">Creative Director</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="section-sm" style="background:var(--surface);border-top:1px solid var(--border);">
+      <div class="container">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;">
+          <div><div class="stat-number" data-count="500" data-suffix="+">500+</div><div class="stat-label">Clients Worldwide</div></div>
+          <div><div class="stat-number" style="color:var(--accent2);" data-count="10">10</div><div class="stat-label">Years Experience</div></div>
+          <div><div class="stat-number" style="color:var(--accent3);" data-count="98" data-suffix="%">98%</div><div class="stat-label">Client Retention</div></div>
+          <div><div class="stat-number" data-count="45">45</div><div class="stat-label">Team Members</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge badge-blue" style="margin-bottom:16px;">Our Values</div>
+          <h2>The Principles That <span class="gradient-text">Drive Us</span></h2>
+        </div>
+        <div class="values-grid">
+          <div class="value-card fade-up">
+            <div class="value-num">01</div>
+            <div class="value-icon">🎯</div>
+            <h3>Results First</h3>
+            <p>Every decision we make is anchored to measurable outcomes. If it doesn't move the needle, we don't do it.</p>
+          </div>
+          <div class="value-card fade-up">
+            <div class="value-num">02</div>
+            <div class="value-icon">🔍</div>
+            <h3>Radical Transparency</h3>
+            <p>No black boxes. You always know exactly what we're doing, why, and what results it's producing.</p>
+          </div>
+          <div class="value-card fade-up">
+            <div class="value-num">03</div>
+            <div class="value-icon">⚡</div>
+            <h3>Relentless Innovation</h3>
+            <p>We stay ahead of algorithm changes and platform updates so you always have a competitive edge.</p>
+          </div>
+          <div class="value-card fade-up">
+            <div class="value-num">04</div>
+            <div class="value-icon">🤝</div>
+            <h3>True Partnership</h3>
+            <p>We integrate into your team, not just manage a campaign. Your success is our success, genuinely.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- History -->
+    <section class="section" style="background:var(--surface);border-top:1px solid var(--border);">
+      <div class="container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+          <div>
+            <div class="badge badge-accent" style="margin-bottom:20px;">Our Journey</div>
+            <h2 style="margin-bottom:40px;">10 Years of <span class="gradient-text">Growth</span></h2>
+            <div class="timeline">
+              <div class="timeline-item"><div class="t-year">2014</div><div class="t-title">Founded in London</div><div class="t-desc">Started as a 3-person SEO consultancy with a mission to make digital marketing honest.</div></div>
+              <div class="timeline-item"><div class="t-year">2016</div><div class="t-title">100th Client Milestone</div><div class="t-desc">Expanded services to PPC and content marketing, hired our first 10 specialists.</div></div>
+              <div class="timeline-item"><div class="t-year">2018</div><div class="t-title">Opened US Office</div><div class="t-desc">Expanded to New York, serving Fortune 500 clients across North America.</div></div>
+              <div class="timeline-item"><div class="t-year">2021</div><div class="t-title">Launched AI Platform</div><div class="t-desc">Built our proprietary analytics and reporting platform used by all clients.</div></div>
+              <div class="timeline-item" style="padding-bottom:0;"><div class="t-year">2024</div><div class="t-title">500+ Clients & Growing</div><div class="t-desc">Now a team of 45 specialists serving clients across 30+ countries.</div></div>
+            </div>
+          </div>
+          <div style="padding-top:20px;">
+            <div class="badge badge-gold" style="margin-bottom:20px;">Awards & Recognition</div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div class="card" style="display:flex;align-items:center;gap:16px;">
+                <div style="font-size:2rem;">🏆</div>
+                <div><div style="font-weight:700;">Best SEO Agency 2024</div><div style="color:var(--text-muted);font-size:0.85rem;">Search Marketing Awards</div></div>
+              </div>
+              <div class="card" style="display:flex;align-items:center;gap:16px;">
+                <div style="font-size:2rem;">⭐</div>
+                <div><div style="font-weight:700;">Top 100 Digital Agencies</div><div style="color:var(--text-muted);font-size:0.85rem;">Agency Spotter 2023</div></div>
+              </div>
+              <div class="card" style="display:flex;align-items:center;gap:16px;">
+                <div style="font-size:2rem;">🥇</div>
+                <div><div style="font-weight:700;">Google Premier Partner</div><div style="color:var(--text-muted);font-size:0.85rem;">Certified since 2016</div></div>
+              </div>
+              <div class="card" style="display:flex;align-items:center;gap:16px;">
+                <div style="font-size:2rem;">💎</div>
+                <div><div style="font-weight:700;">Inc. 5000 Fast Growing</div><div style="color:var(--text-muted);font-size:0.85rem;">Ranked #312 in 2023</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge badge-accent" style="margin-bottom:16px;">Our Team</div>
+          <h2>Meet the <span class="gradient-text">Experts</span></h2>
+          <p>45 passionate specialists dedicated to growing your business.</p>
+        </div>
+        <div class="team-grid">
+          <div class="team-card fade-up"><div class="team-emoji">👨‍💼</div><div class="team-name">Alex Carter</div><div class="team-role">CEO & Founder</div><div class="team-bio">10 years building agencies. Former Google strategist.</div></div>
+          <div class="team-card fade-up"><div class="team-emoji">👩‍💻</div><div class="team-name">Priya Shah</div><div class="team-role">Head of SEO</div><div class="team-bio">Technical SEO expert. 8+ years, 300 site audits.</div></div>
+          <div class="team-card fade-up"><div class="team-emoji">👨‍🎨</div><div class="team-name">Marcus Lee</div><div class="team-role">Creative Director</div><div class="team-bio">Award-winning designer. Brand identity specialist.</div></div>
+          <div class="team-card fade-up"><div class="team-emoji">👩‍📊</div><div class="team-name">Sasha Williams</div><div class="team-role">PPC Manager</div><div class="team-bio">Managed $5M+ in ad spend. ROAS fanatic.</div></div>
+          <div class="team-card fade-up"><div class="team-emoji">👨‍🔬</div><div class="team-name">Ravi Patel</div><div class="team-role">Data Analyst</div><div class="team-bio">Ex-McKinsey data scientist. Loves dashboards.</div></div>
+          <div class="team-card fade-up"><div class="team-emoji">👩‍✍️</div><div class="team-name">Emma Torres</div><div class="team-role">Content Lead</div><div class="team-bio">Former journalist. 500+ articles that rank #1.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-section" style="background:linear-gradient(135deg,rgba(255,77,106,0.1),rgba(0,212,255,0.05));text-align:center;">
+      <div class="container">
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:16px;">Ready to Work With the <span class="gradient-text">Best?</span></h2>
+        <p style="color:var(--text-muted);max-width:460px;margin:0 auto 32px;">Let's build something extraordinary together. Your first consultation is free.</p>
+        <a href="contact.html"><button class="btn-lg btn-primary-lg">Book a Free Call →</button></a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" style="font-size:1.3rem;"><div class="brand-icon" style="width:32px;height:32px;font-size:16px;">⚡</div>DigiBoost</a>
+        <p>Empowering brands through data-driven digital marketing and SEO strategies that deliver measurable results.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn">𝕏</a><a href="#" class="social-btn">in</a><a href="#" class="social-btn">f</a><a href="#" class="social-btn">▶</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">SEO Optimization</a></li><li><a href="services.html">PPC Advertising</a></li><li><a href="services.html">Content Marketing</a></li><li><a href="services.html">Social Media</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="case-studies.html">Case Studies</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Help Center</a></li><li><a href="#">Documentation</a></li><li><a href="login.html">Login</a></li><li><a href="signup.html">Sign Up</a></li></ul></div>
     </div>
-
-    <div class="card" style="text-align: center;">
-        <img src="assets/lap.avif" alt="Marcus Chen"
-             style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin: 0 auto var(--spacing-md); display: block;">
-        <h3>Marcus Chen</h3>
-        <p style="color: var(--color-primary); font-weight: 600; margin-bottom: var(--spacing-sm);">
-            Director of Analytics
-        </p>
-        <p>Data scientist turned marketer. Transforms complex data into actionable growth strategies.</p>
+    <div class="footer-bottom">
+      <p>© 2025 DigiBoost. All rights reserved.</p>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a></div>
     </div>
+  </footer>
 
-</div>
-
-        </div>
-    </section>
-
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3>2015</h3>
-                    <p>Year Founded</p>
-                </div>
-                <div class="stat-item">
-                    <h3>500+</h3>
-                    <p>Happy Clients</p>
-                </div>
-                <div class="stat-item">
-                    <h3>50+</h3>
-                    <p>Team Members</p>
-                </div>
-                <div class="stat-item">
-                    <h3>15</h3>
-                    <p>Countries Served</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-                <h2>Ready to Work With Us?</h2>
-                <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: var(--spacing-xl);">Let's discuss how we can help your business achieve extraordinary growth</p>
-                <div class="hero-cta">
-                    <a href="contact.html" class="btn btn-primary btn-lg">Get In Touch</a>
-                    <a href="case-studies.html" class="btn btn-secondary btn-lg">View Our Work</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>DigiBoost</h3>
-                    <p>Empowering businesses to achieve extraordinary digital growth through innovative marketing strategies and proven SEO techniques.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="case-studies.html">Case Studies</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="login.html">Login</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="services.html">SEO</a></li>
-                        <li><a href="services.html">Social Media</a></li>
-                        <li><a href="services.html">PPC</a></li>
-                        <li><a href="services.html">Content</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Support</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 DigiBoost. All rights reserved.</p>
-                <div>
-                    <a style="color: red;" href="./404.html">(404 error)</a>
-                    <a style="color: red;" href="./comming-soon.html">(Comming soon)</a>
-                    <a href="#!">Privacy Policy</a>
-                    <a href="#!">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-  <script src="main.js"></script>
-    <script src="rtl.js"></script>
+  <script src="shared.js"></script>
 </body>
 </html>

@@ -1,283 +1,798 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DigiBoost - Revolutionary Digital Marketing Solutions">
-    <title>DigiBoost - Transform Your Digital Future</title>
-    
-    <!-- Google Fonts -->
-     <link rel="stylesheet" href="style.css">
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DigiBoost – Performance Marketing Agency</title>
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* ===== HOME 2: Clean Minimal Editorial with Teal accent ===== */
+    :root {
+      --h2-accent: #00D4FF;
+      --h2-accent2: #7B5EA7;
+    }
+
+    .hero2 {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background: linear-gradient(180deg, #060B22 0%, var(--primary) 100%);
+      overflow: hidden;
+    }
+
+    .hero2-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .circle-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(0,212,255,0.1);
+    }
+
+    .ring-1 { width: 400px; height: 400px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .ring-2 { width: 700px; height: 700px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .ring-3 { width: 1000px; height: 1000px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+
+    .hero2-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .h2-left {}
+
+    .h2-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .h2-line {
+      width: 40px;
+      height: 2px;
+      background: var(--h2-accent);
+    }
+
+    .h2-eyebrow span {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--h2-accent);
+    }
+
+    .h2-title {
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .h2-title .highlight {
+      background: linear-gradient(135deg, #00D4FF, #7B5EA7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .h2-desc {
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-size: 1rem;
+      margin-bottom: 36px;
+      max-width: 460px;
+    }
+
+    .h2-cta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-teal {
+      padding: 14px 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #00D4FF, #0080FF);
+      color: #fff;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-teal:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,212,255,0.35);
+    }
+
+    .btn-text {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      background: none;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .btn-text:hover { color: var(--text); }
+
+    .play-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+
+    .btn-text:hover .play-btn { border-color: var(--h2-accent); background: rgba(0,212,255,0.1); }
+
+    /* Right panel */
+    .h2-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .h2-metric-card {
+      background: rgba(13,20,53,0.8);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+
+    .h2-metric-card:hover { border-color: rgba(0,212,255,0.3); }
+
+    .hm-info {}
+    .hm-label { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 4px; }
+    .hm-value { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; }
+
+    .hm-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 50px;
+    }
+
+    .mini-bar {
+      width: 8px;
+      border-radius: 3px 3px 0 0;
+      background: var(--surface3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mini-bar::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      border-radius: inherit;
+      animation: barGrow2 1s ease forwards;
+    }
+
+    @keyframes barGrow2 { from{height:0} }
+
+    .mini-bar.teal::after { background: linear-gradient(to top, #00D4FF, #0080FF); }
+    .mini-bar.purple::after { background: linear-gradient(to top, #7B5EA7, #9B5EA7); }
+    .mini-bar.red::after { background: linear-gradient(to top, #FF4D6A, #FF8C42); }
+
+    .mini-bar:nth-child(1)::after { height: 30%; animation-delay: 0.1s; }
+    .mini-bar:nth-child(2)::after { height: 50%; animation-delay: 0.15s; }
+    .mini-bar:nth-child(3)::after { height: 40%; animation-delay: 0.2s; }
+    .mini-bar:nth-child(4)::after { height: 70%; animation-delay: 0.25s; }
+    .mini-bar:nth-child(5)::after { height: 55%; animation-delay: 0.3s; }
+    .mini-bar:nth-child(6)::after { height: 85%; animation-delay: 0.35s; }
+
+    .hm-trend {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 50px;
+    }
+
+    .trend-up { background: rgba(0,255,128,0.1); color: #00FF80; }
+    .trend-hot { background: rgba(255,77,106,0.1); color: var(--accent); }
+    .trend-blue { background: rgba(0,212,255,0.1); color: var(--h2-accent); }
+
+    /* Process Section */
+    .process-section {
+      background: #060B22;
+      position: relative;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), var(--h2-accent), var(--border), transparent);
+    }
+
+    .process-step {
+      padding: 24px;
+      text-align: center;
+    }
+
+    .step-num {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--h2-accent);
+      position: relative;
+      z-index: 1;
+      transition: var(--transition);
+    }
+
+    .process-step:hover .step-num {
+      background: linear-gradient(135deg, #00D4FF, #0080FF);
+      color: #fff;
+      border-color: transparent;
+      transform: scale(1.1);
+    }
+
+    .process-step h3 { font-size: 1rem; margin-bottom: 8px; }
+    .process-step p { color: var(--text-muted); font-size: 0.85rem; }
+
+    /* Features Grid - different layout */
+    .features-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .features-list { display: flex; flex-direction: column; gap: 24px; }
+
+    .feature-item {
+      display: flex;
+      gap: 16px;
+      padding: 20px;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      transition: var(--transition);
+      cursor: default;
+    }
+
+    .feature-item:hover {
+      background: var(--surface);
+      border-color: rgba(0,212,255,0.2);
+    }
+
+    .feature-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: rgba(0,212,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .feature-item h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .feature-item p { color: var(--text-muted); font-size: 0.85rem; }
+
+    /* Visual side */
+    .features-visual {
+      position: relative;
+    }
+
+    .big-metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 36px;
+      text-align: center;
+    }
+
+    .big-donut {
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: conic-gradient(#00D4FF 0% 70%, #7B5EA7 70% 87%, #FF4D6A 87% 100%);
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .big-donut::after {
+      content: '';
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: var(--surface);
+      position: absolute;
+    }
+
+    .donut-center {
+      position: absolute;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .donut-pct { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; }
+    .donut-lbl { font-size: 0.7rem; color: var(--text-muted); }
+
+    .donut-legend { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--text-muted); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+    /* Pricing preview */
+    .pricing-cards-2 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .p2-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .p2-card.featured {
+      background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(123,94,167,0.08));
+      border-color: rgba(0,212,255,0.3);
+    }
+
+    .p2-card:hover { transform: translateY(-6px); }
+
+    .p2-badge {
+      position: absolute;
+      top: -12px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, #00D4FF, #7B5EA7);
+      color: #fff;
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .p2-name { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+    .p2-price { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; margin-bottom: 4px; }
+    .p2-price span { font-size: 1rem; color: var(--text-muted); }
+    .p2-desc { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 24px; }
+    .p2-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .p2-features li { font-size: 0.875rem; color: var(--text-muted); display: flex; gap: 8px; }
+    .p2-features li::before { content: '✓'; color: var(--h2-accent); font-weight: 700; flex-shrink: 0; }
+
+    .btn-p2 {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-p2-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-p2-outline:hover { border-color: var(--h2-accent); color: var(--h2-accent); }
+
+    .btn-p2-filled {
+      background: linear-gradient(135deg, #00D4FF, #0080FF);
+      border: none;
+      color: #fff;
+    }
+
+    .btn-p2-filled:hover { box-shadow: 0 8px 20px rgba(0,212,255,0.35); transform: translateY(-2px); }
+
+    @media (max-width: 1024px) {
+      .hero2-content { grid-template-columns: 1fr; gap: 40px; }
+      .h2-right { display: none; }
+      .process-steps { grid-template-columns: repeat(2,1fr); }
+      .process-steps::before { display: none; }
+      .features-2col { grid-template-columns: 1fr; }
+      .pricing-cards-2 { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+    }
+
+    @media (max-width: 768px) {
+      .process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-<body>   
-     <header>
-             <nav style="margin-bottom: 0px;">
-            <a href="index.html" class="logo">DigiBoost</a>
-            <ul class="nav-links">
-                <li class="dropdown">
-    <a href="#">Home ▾</a>
-    <ul class="dropdown-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index2.html">Home 2</a></li>
-    </ul>
-</li>
-                <!-- <li><a href="index.html">Home</a></li>
-                <li><a href="index2.html">Home2</a></li> -->
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="case-studies.html">Case Studies</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <!-- <li><a href="admin-dashboard.html">admin</a></li>
-                <li><a href="user-dashboard.html">user</a></li> -->
-                 <li class="dropdown">
-    <a href="#">Dashboard ▾</a>
-    <ul class="dropdown-menu">
-        <li><a href="user-dashboard.html">user</a></li>
-        <li><a href="admin-dashboard.html">admin</a></li>
-    </ul>
-</li>
-                <li><a href="login.html">Login</a></li>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">⚡</div>
+        DigiBoost
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-dropdown">
+            <a href="#" class="active">🏠 Home</a>
+            <div class="dropdown-menu">
+              <a href="index.html" class="dd-home1"><span class="dd-icon">🌟</span> Home 1 – Bold</a>
+              <a href="index2.html" class="dd-home2"><span class="dd-icon">🌊</span> Home 2 – Minimal</a>
+            </div>
+          </li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="nav-dropdown">
+            <a href="#">📊 Dashboard</a>
+            <div class="dropdown-menu">
+              <a href="user-dashboard.html" class="dd-user"><span class="dd-icon">👤</span> User Dashboard</a>
+              <a href="admin-dashboard.html" class="dd-admin"><span class="dd-icon">🛡</span> Admin Dashboard</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-rtl" id="rtl-btn" onclick="toggleRTL()" title="Toggle RTL/LTR">🌐</button>
+        <a href="login.html"><button class="btn-outline">Log In</button></a>
+        <a href="signup.html"><button class="btn-primary">Get Started</button></a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav">
+    <a href="index.html">🏠 Home 1 – Bold</a>
+    <a href="index2.html">🏠 Home 2 – Minimal</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="contact.html">Contact</a>
+    <a href="user-dashboard.html">👤 User Dashboard</a>
+    <a href="admin-dashboard.html">🛡 Admin Dashboard</a>
+    <a href="login.html">Log In</a>
+    <a href="signup.html">Get Started →</a>
+  </nav>
+
+  <div class="page-wrap">
+
+    <!-- Hero 2 -->
+    <section class="hero2">
+      <div class="hero2-bg">
+        <div class="circle-ring ring-1"></div>
+        <div class="circle-ring ring-2"></div>
+        <div class="circle-ring ring-3"></div>
+      </div>
+
+      <div class="hero2-content">
+        <div class="h2-left">
+          <div class="h2-eyebrow">
+            <div class="h2-line"></div>
+            <span>Performance Marketing Agency</span>
+          </div>
+          <h1 class="h2-title">
+            Scale Your Brand<br>
+            with <span class="highlight">Precision</span><br>
+            & Data
+          </h1>
+          <p class="h2-desc">
+            We combine technical SEO mastery with performance marketing to build sustainable growth engines. No fluff — just results backed by data.
+          </p>
+          <div class="h2-cta">
+            <a href="contact.html"><button class="btn-teal">Get a Free Audit →</button></a>
+            <button class="btn-text">
+              <div class="play-btn">▶</div>
+              Watch Demo
+            </button>
+          </div>
+        </div>
+
+        <div class="h2-right">
+          <div class="h2-metric-card">
+            <div class="hm-info">
+              <div class="hm-label">Organic Traffic</div>
+              <div class="hm-value gradient-text-blue" data-count="124" data-suffix="K">0K</div>
+              <div class="hm-trend trend-up" style="display:inline-block;margin-top:6px;">▲ 34% this month</div>
+            </div>
+            <div class="hm-chart">
+              <div class="mini-bar teal" style="height:50px;"></div>
+              <div class="mini-bar teal" style="height:50px;"></div>
+              <div class="mini-bar teal" style="height:50px;"></div>
+              <div class="mini-bar teal" style="height:50px;"></div>
+              <div class="mini-bar teal" style="height:50px;"></div>
+              <div class="mini-bar teal" style="height:50px;"></div>
+            </div>
+          </div>
+          <div class="h2-metric-card">
+            <div class="hm-info">
+              <div class="hm-label">Conversion Rate</div>
+              <div class="hm-value" style="color:var(--accent3);" data-count="8" data-suffix=".4%">0%</div>
+              <div class="hm-trend trend-hot" style="display:inline-block;margin-top:6px;">▲ Best month ever</div>
+            </div>
+            <div class="hm-chart">
+              <div class="mini-bar red" style="height:50px;"></div>
+              <div class="mini-bar red" style="height:50px;"></div>
+              <div class="mini-bar red" style="height:50px;"></div>
+              <div class="mini-bar red" style="height:50px;"></div>
+              <div class="mini-bar red" style="height:50px;"></div>
+              <div class="mini-bar red" style="height:50px;"></div>
+            </div>
+          </div>
+          <div class="h2-metric-card">
+            <div class="hm-info">
+              <div class="hm-label">ROAS Average</div>
+              <div class="hm-value" style="color:var(--accent);" data-count="7" data-suffix=".2×">0×</div>
+              <div class="hm-trend trend-blue" style="display:inline-block;margin-top:6px;">→ Across all clients</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section process-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge badge-blue" style="margin-bottom:16px;">How It Works</div>
+          <h2>Our <span class="gradient-text-blue">4-Step Process</span> to Success</h2>
+          <p>A proven framework that consistently delivers results across industries and markets.</p>
+        </div>
+        <div class="process-steps">
+          <div class="process-step fade-up">
+            <div class="step-num">01</div>
+            <h3>Discovery Audit</h3>
+            <p>Deep analysis of your current digital presence, competitors and growth opportunities.</p>
+          </div>
+          <div class="process-step fade-up">
+            <div class="step-num">02</div>
+            <h3>Strategy Design</h3>
+            <p>Custom roadmap built around your goals, budget and target audience segments.</p>
+          </div>
+          <div class="process-step fade-up">
+            <div class="step-num">03</div>
+            <h3>Execute & Optimize</h3>
+            <p>Rapid deployment with weekly optimizations based on real performance data.</p>
+          </div>
+          <div class="process-step fade-up">
+            <div class="step-num">04</div>
+            <h3>Scale & Report</h3>
+            <p>Scale what works, report everything transparently with live dashboards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section">
+      <div class="container">
+        <div class="features-2col">
+          <div>
+            <div class="badge badge-blue" style="margin-bottom:20px;">Why DigiBoost</div>
+            <h2 style="margin-bottom:16px;">Built for <span class="gradient-text-blue">Serious Growth</span></h2>
+            <p style="color:var(--text-muted);margin-bottom:36px;">We're not a typical agency. We're a performance partner obsessed with your ROI.</p>
+            <div class="features-list">
+              <div class="feature-item">
+                <div class="feature-icon">🎯</div>
+                <div>
+                  <h4>Precision Targeting</h4>
+                  <p>Audience segmentation powered by first-party data and AI behavioural models.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">📡</div>
+                <div>
+                  <h4>Real-Time Analytics</h4>
+                  <p>Live dashboards giving you 24/7 visibility into every campaign and metric.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">🤖</div>
+                <div>
+                  <h4>AI-Powered Insights</h4>
+                  <p>Machine learning that predicts trends and automates bid optimisation at scale.</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">🔒</div>
+                <div>
+                  <h4>No Lock-In Contracts</h4>
+                  <p>Flexible monthly agreements — we earn your business every single month.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="features-visual">
+            <div class="big-metric-card">
+              <div class="big-donut">
+                <div class="donut-center">
+                  <div class="donut-pct">70%</div>
+                  <div class="donut-lbl">SEO</div>
+                </div>
+              </div>
+              <h4 style="margin-bottom:8px;">Traffic Channel Mix</h4>
+              <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:20px;">Balanced multi-channel strategy</p>
+              <div class="donut-legend">
+                <div class="legend-item"><div class="legend-dot" style="background:#00D4FF;"></div>SEO (70%)</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#7B5EA7;"></div>Paid (17%)</div>
+                <div class="legend-item"><div class="legend-dot" style="background:#FF4D6A;"></div>Social (13%)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Preview -->
+    <section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge badge-blue" style="margin-bottom:16px;">Transparent Pricing</div>
+          <h2>Simple, <span class="gradient-text-blue">Predictable</span> Pricing</h2>
+          <p>No hidden fees. No surprises. Just clear investment in your growth.</p>
+        </div>
+        <div class="pricing-cards-2">
+          <div class="p2-card">
+            <div class="p2-name">Starter</div>
+            <div class="p2-price">$997<span>/mo</span></div>
+            <div class="p2-desc">Perfect for small businesses ready to grow.</div>
+            <ul class="p2-features">
+              <li>SEO Audit & Strategy</li>
+              <li>5 Target Keywords</li>
+              <li>Monthly Content (2 posts)</li>
+              <li>Google Analytics Setup</li>
+              <li>Monthly Report</li>
             </ul>
-            <div class="nav-controls">
-                <button class="rtl-toggle">🌍</button>
-                <button class="mobile-menu-toggle">☰</button>
-            </div>
-        </nav>
-    </header>
-
-    <section style="margin-top: 0px;" class="hero-split">
-        <div class="hero-left">
-            <div class="hero-badge">✨ Trusted by 10,000+ Businesses</div>
-            <h1 style="font-size: 65px;">
-                Accelerate Your<br>
-                <span class="gradient-text">Digital Growth</span>
-            </h1>
-            <p>Transform your online presence with cutting-edge SEO strategies and data-driven marketing campaigns that deliver explosive results.</p>
-            <div class="hero-cta">
-                <a href="contact.html" class="btn btn-primary btn-lg">Get Started Free</a>
-                <a href="case-studies.html" class="btn btn-outline btn-lg">View Case Studies</a>
-            </div>
+            <a href="pricing.html"><button class="btn-p2 btn-p2-outline">Get Started</button></a>
+          </div>
+          <div class="p2-card featured">
+            <div class="p2-badge">Most Popular</div>
+            <div class="p2-name">Growth</div>
+            <div class="p2-price" style="background:linear-gradient(135deg,#00D4FF,#7B5EA7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">$2,497<span style="-webkit-text-fill-color:var(--text-muted)">/mo</span></div>
+            <div class="p2-desc">For scaling brands that want serious results.</div>
+            <ul class="p2-features">
+              <li>Full SEO + Link Building</li>
+              <li>25 Target Keywords</li>
+              <li>Content (8 posts/mo)</li>
+              <li>PPC Management (up to $10K spend)</li>
+              <li>Weekly Reports</li>
+              <li>Dedicated Account Manager</li>
+            </ul>
+            <a href="pricing.html"><button class="btn-p2 btn-p2-filled">Start Growing →</button></a>
+          </div>
+          <div class="p2-card">
+            <div class="p2-name">Enterprise</div>
+            <div class="p2-price">Custom</div>
+            <div class="p2-desc">For large organisations with complex needs.</div>
+            <ul class="p2-features">
+              <li>Full-Service Digital</li>
+              <li>Unlimited Keywords</li>
+              <li>Custom Content Volume</li>
+              <li>Multi-Platform PPC</li>
+              <li>Dedicated Team</li>
+              <li>Real-Time Dashboard</li>
+            </ul>
+            <a href="contact.html"><button class="btn-p2 btn-p2-outline">Contact Us</button></a>
+          </div>
         </div>
-        <div class="hero-right">
-            <div class="hero-visual">
-                <h2>500+</h2>
-                <p>Projects Completed</p>
-            </div>
-        </div>
+      </div>
     </section>
 
-    <!-- Bento Box Grid Section -->
-    <section class="bento-section">
-        <div class="bento-header">
-            <div class="section-badge">Our Services</div>
-            <h2>Everything You Need to Dominate</h2>
-            <p>Comprehensive solutions for modern digital marketing</p>
+    <!-- CTA 2 -->
+    <section class="section" style="text-align:center;background:linear-gradient(135deg,rgba(0,212,255,0.08),rgba(123,94,167,0.08));">
+      <div class="container">
+        <div class="h2-eyebrow" style="justify-content:center;margin-bottom:20px;">
+          <div class="h2-line"></div>
+          <span>Free No-Obligation Audit</span>
+          <div class="h2-line"></div>
         </div>
-        <div class="bento-grid">
-            <div class="bento-item large">
-                <div>
-                    <div class="bento-icon">🎯</div>
-                    <h3>SEO Optimization</h3>
-                    <p>Dominate search rankings with advanced technical SEO, content strategy, and link building campaigns.</p>
-                </div>
-                <div class="bento-stat">250%</div>
-            </div>
-            
-            <div class="bento-item medium">
-                <div class="bento-icon">📱</div>
-                <h3>Social Media</h3>
-                <p>Build engaged communities across all platforms.</p>
-            </div>
-            
-            <div class="bento-item tall">
-                <div class="bento-icon">💰</div>
-                <h3>PPC Advertising</h3>
-                <p>Maximize ROI with expertly managed paid campaigns.</p>
-                <div class="bento-stat" style="margin-top: 40px;">98%</div>
-            </div>
-            
-            <div class="bento-item medium">
-                <div class="bento-icon">✍️</div>
-                <h3>Content Marketing</h3>
-                <p>High-quality content that ranks and converts.</p>
-            </div>
-            
-            <div class="bento-item wide">
-                <div>
-                    <div class="bento-icon">📊</div>
-                    <h3>Analytics & Insights</h3>
-                    <p>Make data-driven decisions with comprehensive analytics dashboards and real-time reporting.</p>
-                </div>
-            </div>
-            
-            <div class="bento-item medium">
-                <div class="bento-icon">📧</div>
-                <h3>Email Marketing</h3>
-                <p>Automated sequences that convert.</p>
-            </div>
-        </div>
+        <h2 style="font-size:clamp(2rem,4vw,3rem);margin-bottom:16px;">Ready to <span class="highlight" style="background:linear-gradient(135deg,#00D4FF,#7B5EA7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Outrank</span> Your Competitors?</h2>
+        <p style="color:var(--text-muted);max-width:480px;margin:0 auto 36px;">Get a free SEO and PPC audit worth $997. No strings attached. See exactly what's holding you back.</p>
+        <a href="contact.html"><button class="btn-teal" style="font-size:1rem;padding:16px 40px;">Claim Your Free Audit →</button></a>
+      </div>
     </section>
 
-    <!-- Diagonal Split Section -->
-    <section class="diagonal-split">
-        <div class="diagonal-bg"></div>
-        <div class="diagonal-content">
-            <div class="diagonal-left">
-                <h2>Proven Process, Powerful Results</h2>
-                <p>Our battle-tested methodology has helped hundreds of businesses achieve exponential growth.</p>
-                <ul class="feature-list">
-                    <li>Comprehensive market and competitor analysis</li>
-                    <li>Custom strategy development with clear KPIs</li>
-                    <li>Multi-channel campaign execution</li>
-                    <li>Continuous optimization and scaling</li>
-                    <li>Transparent reporting and communication</li>
-                </ul>
-            </div>
-            <div class="diagonal-right">
-                <h3>15M+</h3>
-                <p style="color: black;">Organic traffic generated for our clients through data-driven SEO strategies and content marketing campaigns.</p>
-            </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" style="font-size:1.3rem;">
+          <div class="brand-icon" style="width:32px;height:32px;font-size:16px;">⚡</div>
+          DigiBoost
+        </a>
+        <p>Empowering brands through data-driven digital marketing and SEO strategies that deliver measurable results.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn">𝕏</a>
+          <a href="#" class="social-btn">in</a>
+          <a href="#" class="social-btn">f</a>
+          <a href="#" class="social-btn">▶</a>
         </div>
-    </section>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">SEO Optimization</a></li>
+          <li><a href="services.html">PPC Advertising</a></li>
+          <li><a href="services.html">Content Marketing</a></li>
+          <li><a href="services.html">Social Media</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 DigiBoost. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
 
-    <!-- Floating Cards Section -->
-    <section class="floating-section">
-        <div class="bento-header">
-            <div class="section-badge">Our Process</div>
-            <h2>How We Drive Growth</h2>
-            <p>A systematic approach to digital domination</p>
-        </div>
-        <div class="floating-grid">
-            <div class="floating-card">
-                <div class="card-number">01</div>
-                <h3>Discover</h3>
-                <p>Deep dive into your business, audience, and competition to uncover opportunities.</p>
-            </div>
-            <div class="floating-card">
-                <div class="card-number">02</div>
-                <h3>Strategize</h3>
-                <p>Develop a custom roadmap with measurable goals and clear timelines.</p>
-            </div>
-            <div class="floating-card">
-                <div class="card-number">03</div>
-                <h3>Execute</h3>
-                <p>Launch data-driven campaigns across all relevant channels.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Full Width CTA -->
-    <section class="fullwidth-cta">
-        <h2>Ready to 10x Your Growth?</h2>
-        <p>Join hundreds of businesses transforming their digital presence</p>
-        <a href="contact.html" class="btn btn-lg" style="background: white; color: #667eea; font-size: 18px; padding: 20px 50px;">Start Your Free Audit</a>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>DigiBoost</h3>
-                    <p>Empowering businesses to achieve extraordinary digital growth through innovative marketing strategies and proven SEO techniques.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="case-studies.html">Case Studies</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="login.html">Login</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="services.html">SEO</a></li>
-                        <li><a href="services.html">Social Media</a></li>
-                        <li><a href="services.html">PPC</a></li>
-                        <li><a href="services.html">Content</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Support</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 DigiBoost. All rights reserved.</p>
-                <div>
-                    <a style="color: red;" href="./404.html">(404 error)</a>
-                    <a style="color: red;" href="./comming-soon.html">(Comming soon)</a>
-                    <a href="#!">Privacy Policy</a>
-                    <a href="#!">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-<script src="main.js"></script>
-<script src="rtl.js"></script>
-    <script>
-        // Theme Toggle
-    
-        // RTL Toggle
-    
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // Scroll Animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.bento-item, .floating-card').forEach((el, index) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-            observer.observe(el);
-        });
-
-        // Mobile Menu Toggle
-        const mobileToggle = document.querySelector('.mobile-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        if (mobileToggle) {
-            mobileToggle.addEventListener('click', () => {
-                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.right = '0';
-                navLinks.style.background = 'var(--bg-card)';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.padding = '20px';
-                navLinks.style.borderTop = '1px solid var(--border-color)';
-            });
-        }
-    </script>
+  <script src="shared.js"></script>
 </body>
 </html>

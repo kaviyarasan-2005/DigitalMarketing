@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon – DigiBoost Blog</title>
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .cs-page { min-height: calc(100vh - 70px); display: flex; align-items: center; justify-content: center; padding: 60px 24px; }
+    .cs-bg { position: fixed; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(0,212,255,0.12) 0%, rgba(255,77,106,0.06) 50%, transparent 70%); pointer-events: none; z-index: 0; }
+    .cs-wrap { max-width: 620px; text-align: center; position: relative; z-index: 1; }
+    .cs-icon-big { font-size: 5rem; margin-bottom: 24px; animation: float 4s ease-in-out infinite; display: block; }
+    .cs-title { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; margin-bottom: 16px; }
+    .cs-desc { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    /* Countdown */
+    .countdown { display: flex; justify-content: center; gap: 24px; margin-bottom: 48px; flex-wrap: wrap; }
+    .cd-unit { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; min-width: 80px; }
+    .cd-num { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; line-height: 1; }
+    .cd-lbl { color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+
+    /* Email Signup */
+    .notify-form { display: flex; gap: 10px; max-width: 420px; margin: 0 auto; }
+    .notify-form input { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 16px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none; }
+    .notify-form input:focus { border-color: var(--accent2); }
+    .notify-form input::placeholder { color: var(--text-dim); }
+    .notify-btn { padding: 12px 20px; background: var(--grad2); border: none; border-radius: var(--radius-sm); color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 600; cursor: pointer; white-space: nowrap; transition: var(--transition); }
+    .notify-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,212,255,0.35); }
+
+    .notify-thanks { display: none; padding: 12px 24px; background: rgba(0,255,128,0.1); border: 1px solid rgba(0,255,128,0.2); border-radius: var(--radius-sm); color: #00FF80; font-size: 0.9rem; }
+    .notify-thanks.show { display: block; }
+
+    .social-links { display: flex; justify-content: center; gap: 12px; margin-top: 36px; }
+    .sl-btn { width: 44px; height: 44px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; transition: var(--transition); color: var(--text-muted); text-decoration: none; }
+    .sl-btn:hover { background: var(--surface2); color: var(--text); border-color: var(--accent2); transform: translateY(-3px); }
+
+    /* Features preview */
+    .what-coming { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 48px 0 0; text-align: left; }
+    .wc-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px; }
+    .wc-icon { font-size: 1.5rem; margin-bottom: 10px; }
+    .wc-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
+    .wc-desc { color: var(--text-muted); font-size: 0.8rem; }
+
+    @media (max-width: 600px) {
+      .notify-form { flex-direction: column; }
+      .what-coming { grid-template-columns: 1fr; }
+      .countdown { gap: 12px; }
+      .cd-unit { padding: 14px 16px; min-width: 64px; }
+      .cd-num { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand"><div class="brand-icon">⚡</div>DigiBoost</a>
+      <nav><ul class="nav-links">
+        <li class="nav-dropdown"><a href="#">🏠 Home</a><div class="dropdown-menu"><a href="index.html" class="dd-home1"><span class="dd-icon">🌟</span>Home 1</a><a href="index2.html" class="dd-home2"><span class="dd-icon">🌊</span>Home 2</a></div></li>
+        <li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="contact.html">Contact</a></li>
+        <li class="nav-dropdown"><a href="#">📊 Dashboard</a><div class="dropdown-menu"><a href="user-dashboard.html" class="dd-user"><span class="dd-icon">👤</span>User</a><a href="admin-dashboard.html" class="dd-admin"><span class="dd-icon">🛡</span>Admin</a></div></li>
+      </ul></nav>
+      <div class="header-actions">
+        <button class="btn-rtl" id="rtl-btn" onclick="toggleRTL()">🌐</button>
+        <a href="login.html"><button class="btn-outline">Log In</button></a>
+        <a href="signup.html"><button class="btn-primary">Get Started</button></a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </header>
+  <nav class="mobile-nav">
+    <a href="index.html">Home 1</a><a href="index2.html">Home 2</a><a href="about.html">About</a>
+    <a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a>
+    <a href="login.html">Login</a><a href="signup.html">Sign Up</a>
+  </nav>
+
+  <div class="page-wrap">
+    <div class="cs-bg"></div>
+    <div class="cs-page">
+      <div class="cs-wrap">
+        <span class="cs-icon-big">🚀</span>
+        <div class="badge badge-blue" style="margin-bottom:20px;justify-content:center;">DigiBoost Blog</div>
+        <h1 class="cs-title">Something <span class="gradient-text-blue">Awesome</span> Is Coming</h1>
+        <p class="cs-desc">We're building the most data-rich digital marketing blog on the internet. In-depth SEO guides, PPC strategies, case studies and industry insights — launching soon.</p>
+
+        <!-- Countdown -->
+        <div class="countdown">
+          <div class="cd-unit">
+            <div class="cd-num" id="cd-days" style="color:var(--accent);">14</div>
+            <div class="cd-lbl">Days</div>
+          </div>
+          <div class="cd-unit">
+            <div class="cd-num" id="cd-hours" style="color:var(--accent2);">08</div>
+            <div class="cd-lbl">Hours</div>
+          </div>
+          <div class="cd-unit">
+            <div class="cd-num" id="cd-mins" style="color:var(--accent3);">32</div>
+            <div class="cd-lbl">Minutes</div>
+          </div>
+          <div class="cd-unit">
+            <div class="cd-num" id="cd-secs" style="color:#9B5EA7;">44</div>
+            <div class="cd-lbl">Seconds</div>
+          </div>
+        </div>
+
+        <!-- Notify Form -->
+        <p style="color:var(--text-muted);font-size:0.875rem;margin-bottom:14px;">🔔 Be first to know — get notified on launch day:</p>
+        <div class="notify-form" id="notify-form">
+          <input type="email" placeholder="your@email.com" id="notify-email">
+          <button class="notify-btn" onclick="submitNotify()">Notify Me →</button>
+        </div>
+        <div class="notify-thanks" id="notify-thanks">🎉 You're on the list! We'll email you on launch day.</div>
+
+        <div class="social-links">
+          <a href="#" class="sl-btn">𝕏</a>
+          <a href="#" class="sl-btn">in</a>
+          <a href="#" class="sl-btn">f</a>
+          <a href="#" class="sl-btn">▶</a>
+        </div>
+
+        <!-- What's coming -->
+        <div class="what-coming">
+          <div class="wc-item">
+            <div class="wc-icon">📖</div>
+            <div class="wc-title">In-Depth Guides</div>
+            <div class="wc-desc">Comprehensive SEO and PPC tutorials backed by real data.</div>
+          </div>
+          <div class="wc-item">
+            <div class="wc-icon">📊</div>
+            <div class="wc-title">Industry Reports</div>
+            <div class="wc-desc">Monthly digital marketing benchmarks and trend analysis.</div>
+          </div>
+          <div class="wc-item">
+            <div class="wc-icon">🧪</div>
+            <div class="wc-title">Experiments & Tests</div>
+            <div class="wc-desc">Our live A/B tests, what worked and what didn't.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:32px;">
+          <a href="index.html"><button class="btn-lg btn-ghost" style="font-size:0.9rem;">← Back to Main Site</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="brand" style="font-size:1.3rem;"><div class="brand-icon" style="width:32px;height:32px;font-size:16px;">⚡</div>DigiBoost</a><p>The blog is coming. Everything else is live and ready for you.</p></div>
+      <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="pricing.html">Pricing</a></li><li><a href="case-studies.html">Case Studies</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 DigiBoost. All rights reserved.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+  </footer>
+
+  <script src="shared.js"></script>
+  <script>
+    // Countdown timer (launches in 14 days from page load)
+    const launchDate = new Date();
+    launchDate.setDate(launchDate.getDate() + 14);
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = launchDate - now;
+      if (diff <= 0) { clearInterval(timer); return; }
+      const d = Math.floor(diff / (1000*60*60*24));
+      const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+      const s = Math.floor((diff % (1000*60)) / 1000);
+      document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+      document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+      document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+      document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+    }
+
+    const timer = setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    function submitNotify() {
+      const email = document.getElementById('notify-email').value;
+      if (!email || !email.includes('@')) { document.getElementById('notify-email').style.borderColor = 'var(--accent)'; return; }
+      document.getElementById('notify-form').style.display = 'none';
+      document.getElementById('notify-thanks').classList.add('show');
+    }
+  </script>
+</body>
+</html>

@@ -1,244 +1,432 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Transparent pricing for all your digital marketing needs">
-    <title>Pricing - DigiBoost</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing – DigiBoost</title>
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .pricing-hero {
+      padding: 140px 0 60px;
+      text-align: center;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255,184,0,0.1) 0%, transparent 60%);
+    }
+
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .toggle-label { font-size: 0.9rem; color: var(--text-muted); }
+    .toggle-label.active { color: var(--text); font-weight: 600; }
+
+    .billing-toggle {
+      width: 52px; height: 28px;
+      background: var(--surface2);
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .billing-toggle.annual { background: var(--accent); }
+
+    .billing-toggle::after {
+      content: '';
+      position: absolute;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      top: 3px; left: 3px;
+      transition: var(--transition);
+    }
+
+    .billing-toggle.annual::after { left: 29px; }
+
+    .save-badge {
+      padding: 3px 10px;
+      background: rgba(0,255,128,0.1);
+      color: #00FF80;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Pricing Cards */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px;
+      position: relative;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pricing-card:hover { transform: translateY(-6px); box-shadow: 0 30px 60px rgba(0,0,0,0.3); }
+
+    .pricing-card.popular {
+      background: linear-gradient(135deg, rgba(255,77,106,0.1) 0%, rgba(255,140,66,0.05) 100%);
+      border-color: rgba(255,77,106,0.4);
+      transform: scale(1.03);
+    }
+
+    .pricing-card.popular:hover { transform: scale(1.03) translateY(-6px); }
+
+    .popular-badge {
+      position: absolute;
+      top: -14px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--grad1);
+      color: #fff;
+      padding: 5px 18px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .plan-icon { font-size: 2rem; margin-bottom: 12px; }
+    .plan-name { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+    .plan-price { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800; margin-bottom: 4px; line-height: 1; }
+    .plan-price .currency { font-size: 1.5rem; vertical-align: top; margin-top: 8px; display: inline-block; }
+    .plan-price .period { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
+    .plan-desc { color: var(--text-muted); font-size: 0.85rem; margin: 12px 0 24px; }
+
+    .plan-divider { height: 1px; background: var(--border); margin-bottom: 24px; }
+
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .plan-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.875rem; }
+    .plan-features li .check { color: #00FF80; font-weight: 700; flex-shrink: 0; }
+    .plan-features li .cross { color: var(--text-dim); flex-shrink: 0; }
+    .plan-features li.faded { color: var(--text-dim); }
+
+    .plan-cta {
+      margin-top: 28px;
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .plan-cta-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .plan-cta-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .plan-cta-filled {
+      background: var(--grad1);
+      border: none;
+      color: #fff;
+    }
+
+    .plan-cta-filled:hover { box-shadow: 0 10px 25px rgba(255,77,106,0.4); transform: translateY(-2px); }
+
+    /* Comparison Table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0;
+    }
+
+    .compare-table th {
+      background: var(--surface2);
+      padding: 16px 20px;
+      text-align: left;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .rtl .compare-table th { text-align: right; }
+
+    .compare-table td {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+    }
+
+    .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .compare-table td:not(:first-child) { text-align: center; }
+    .compare-table .yes { color: #00FF80; }
+    .compare-table .no { color: var(--text-dim); }
+    .compare-table .highlight-col { background: rgba(255,77,106,0.05); }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 780px; margin: 0 auto; }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .faq-q {
+      padding: 20px 24px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .faq-q:hover { color: var(--accent); }
+
+    .faq-arrow { transition: var(--transition); font-size: 1.2rem; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+    .faq-a {
+      padding: 0 24px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
+
+    @media (max-width: 900px) {
+      .pricing-grid { grid-template-columns: 1fr; max-width: 460px; }
+      .pricing-card.popular { transform: none; }
+    }
+  </style>
 </head>
 <body>
-  
-    <header>
-             <nav>
-            <a href="index.html" class="logo">DigiBoost</a>
-            <ul class="nav-links">
-                <li class="dropdown">
-    <a href="#">Home ▾</a>
-    <ul class="dropdown-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index2.html">Home 2</a></li>
-    </ul>
-</li>
-                <!-- <li><a href="index.html">Home</a></li>
-                <li><a href="index2.html">Home2</a></li> -->
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="case-studies.html">Case Studies</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <!-- <li><a href="admin-dashboard.html">admin</a></li>
-                <li><a href="user-dashboard.html">user</a></li> -->
-                 <li class="dropdown">
-    <a href="#">Dashboard ▾</a>
-    <ul class="dropdown-menu">
-        <li><a href="user-dashboard.html">user</a></li>
-        <li><a href="admin-dashboard.html">admin</a></li>
-    </ul>
-</li>
-                <li><a href="login.html">Login</a></li>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand"><div class="brand-icon">⚡</div>DigiBoost</a>
+      <nav><ul class="nav-links">
+        <li class="nav-dropdown"><a href="#">🏠 Home</a><div class="dropdown-menu"><a href="index.html" class="dd-home1"><span class="dd-icon">🌟</span>Home 1</a><a href="index2.html" class="dd-home2"><span class="dd-icon">🌊</span>Home 2</a></div></li>
+        <li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html" class="active">Pricing</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li><li><a href="contact.html">Contact</a></li>
+        <li class="nav-dropdown"><a href="#">📊 Dashboard</a><div class="dropdown-menu"><a href="user-dashboard.html" class="dd-user"><span class="dd-icon">👤</span>User</a><a href="admin-dashboard.html" class="dd-admin"><span class="dd-icon">🛡</span>Admin</a></div></li>
+      </ul></nav>
+      <div class="header-actions">
+        <button class="btn-rtl" id="rtl-btn" onclick="toggleRTL()">🌐</button>
+        <a href="login.html"><button class="btn-outline">Log In</button></a>
+        <a href="signup.html"><button class="btn-primary">Get Started</button></a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </header>
+  <nav class="mobile-nav">
+    <a href="index.html">Home 1</a><a href="index2.html">Home 2</a><a href="about.html">About</a>
+    <a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="case-studies.html">Case Studies</a>
+    <a href="contact.html">Contact</a><a href="user-dashboard.html">User Dashboard</a><a href="admin-dashboard.html">Admin</a>
+    <a href="login.html">Login</a><a href="signup.html">Sign Up</a>
+  </nav>
+
+  <div class="page-wrap">
+
+    <section class="pricing-hero">
+      <div class="container">
+        <div class="badge badge-gold" style="margin-bottom:16px;">Transparent Pricing</div>
+        <h1>Invest in <span class="gradient-text">Real Growth</span></h1>
+        <p style="color:var(--text-muted);max-width:500px;margin:12px auto 0;">All plans include a dedicated account manager, monthly reporting and access to our live analytics dashboard.</p>
+        <div class="toggle-wrap">
+          <span class="toggle-label active" id="monthly-lbl">Monthly</span>
+          <div class="billing-toggle" id="billing-toggle" onclick="toggleBilling()"></div>
+          <span class="toggle-label" id="annual-lbl">Annual</span>
+          <span class="save-badge">Save 20%</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:40px;">
+      <div class="container">
+        <div class="pricing-grid">
+
+          <div class="pricing-card fade-up">
+            <div class="plan-icon">🚀</div>
+            <div class="plan-name">Starter</div>
+            <div class="plan-price">
+              <span class="currency">$</span>
+              <span class="price-val" data-monthly="997" data-annual="797">997</span>
+              <span class="period">/mo</span>
+            </div>
+            <div class="plan-desc">Perfect for small businesses and startups getting serious about SEO.</div>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              <li><span class="check">✓</span> SEO Audit & Strategy</li>
+              <li><span class="check">✓</span> 5 Target Keywords</li>
+              <li><span class="check">✓</span> 2 Blog Posts/month</li>
+              <li><span class="check">✓</span> Google Analytics Setup</li>
+              <li><span class="check">✓</span> Monthly Report</li>
+              <li><span class="check">✓</span> Basic Link Building (5/mo)</li>
+              <li class="faded"><span class="cross">✕</span> PPC Management</li>
+              <li class="faded"><span class="cross">✕</span> Social Media Management</li>
+              <li class="faded"><span class="cross">✕</span> Dedicated Account Manager</li>
             </ul>
-            <div class="nav-controls">
-                <button class="rtl-toggle">🌍</button>
-                <button class="mobile-menu-toggle">☰</button>
+            <a href="signup.html"><button class="plan-cta plan-cta-outline">Get Started</button></a>
+          </div>
+
+          <div class="pricing-card popular fade-up">
+            <div class="popular-badge">⚡ Most Popular</div>
+            <div class="plan-icon">🏆</div>
+            <div class="plan-name">Growth</div>
+            <div class="plan-price" style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+              <span class="currency" style="-webkit-text-fill-color:var(--text);">$</span>
+              <span class="price-val" data-monthly="2497" data-annual="1997">2,497</span>
+              <span class="period" style="-webkit-text-fill-color:var(--text-muted);">/mo</span>
             </div>
-        </nav>
-    </header>
-    <section class="hero" style="padding: 120px 0 80px;">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">Transparent Pricing</div>
-                <h1>Choose Your <span class="gradient-text">Growth Plan</span></h1>
-                <p>Simple, transparent pricing with no hidden fees. All plans include our commitment to your success.</p>
+            <div class="plan-desc">For scaling brands that need serious SEO + paid media results.</div>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              <li><span class="check">✓</span> Full Technical SEO</li>
+              <li><span class="check">✓</span> 25 Target Keywords</li>
+              <li><span class="check">✓</span> 8 Blog Posts/month</li>
+              <li><span class="check">✓</span> PPC (up to $10K spend)</li>
+              <li><span class="check">✓</span> 20 Link Builds/month</li>
+              <li><span class="check">✓</span> Weekly Reports</li>
+              <li><span class="check">✓</span> Dedicated Account Manager</li>
+              <li><span class="check">✓</span> CRO Recommendations</li>
+              <li><span class="check">✓</span> 2 Social Profiles</li>
+            </ul>
+            <a href="signup.html"><button class="plan-cta plan-cta-filled">Start Growing →</button></a>
+          </div>
+
+          <div class="pricing-card fade-up">
+            <div class="plan-icon">👑</div>
+            <div class="plan-name">Enterprise</div>
+            <div class="plan-price">
+              <span style="font-size:2rem;">Custom</span>
             </div>
+            <div class="plan-desc">For large organisations with complex, multi-market requirements.</div>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              <li><span class="check">✓</span> Full-Service Digital Marketing</li>
+              <li><span class="check">✓</span> Unlimited Keywords</li>
+              <li><span class="check">✓</span> Custom Content Volume</li>
+              <li><span class="check">✓</span> Multi-Platform PPC</li>
+              <li><span class="check">✓</span> Unlimited Link Building</li>
+              <li><span class="check">✓</span> Real-Time Live Dashboard</li>
+              <li><span class="check">✓</span> Dedicated Team (3+ people)</li>
+              <li><span class="check">✓</span> International SEO</li>
+              <li><span class="check">✓</span> Custom Reporting & API</li>
+            </ul>
+            <a href="contact.html"><button class="plan-cta plan-cta-outline">Contact Sales</button></a>
+          </div>
+
         </div>
+      </div>
     </section>
 
-    <section>
-        <div class="container">
-            <div class="grid grid-3">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Starter</h3>
-                        <div class="pricing-price">$1,499<span>/month</span></div>
-                        <p>Perfect for small businesses getting started</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>SEO Optimization (10 pages)</li>
-                        <li>Monthly Performance Reports</li>
-                        <li>Keyword Research & Strategy</li>
-                        <li>On-Page Optimization</li>
-                        <li>Google Analytics Setup</li>
-                        <li>Email Support</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-outline" style="width: 100%; margin-top: var(--spacing-md);">Get Started</a>
-                </div>
-
-                <div class="pricing-card featured">
-                    <div style="background: var(--gradient-primary); color: white; padding: 0.5rem; text-align: center; margin: -2.5rem -2.5rem 1.5rem; border-radius: var(--radius-lg) var(--radius-lg) 0 0; font-weight: 700;">
-                        MOST POPULAR
-                    </div>
-                    <div class="pricing-header">
-                        <h3>Professional</h3>
-                        <div class="pricing-price">$3,999<span>/month</span></div>
-                        <p>For growing businesses ready to scale</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>SEO Optimization (30 pages)</li>
-                        <li>Social Media Management</li>
-                        <li>PPC Campaign Management</li>
-                        <li>Content Marketing (4 posts/month)</li>
-                        <li>Monthly Strategy Calls</li>
-                        <li>Advanced Analytics</li>
-                        <li>Priority Support</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-primary" style="width: 100%; margin-top: var(--spacing-md);">Get Started</a>
-                </div>
-
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Enterprise</h3>
-                        <div class="pricing-price">Custom</div>
-                        <p>Custom solutions for large organizations</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>Unlimited SEO Optimization</li>
-                        <li>Multi-Channel Marketing</li>
-                        <li>Dedicated Account Manager</li>
-                        <li>Custom Strategy & Roadmap</li>
-                        <li>Advanced Automation</li>
-                        <li>White-Label Reporting</li>
-                        <li>24/7 Support</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-outline" style="width: 100%; margin-top: var(--spacing-md);">Contact Sales</a>
-                </div>
-            </div>
+    <!-- Comparison -->
+    <section class="section" style="background:var(--surface);border-top:1px solid var(--border);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Full <span class="gradient-text">Plan Comparison</span></h2>
         </div>
+        <div style="overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border);">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th style="min-width:200px;">Feature</th>
+                <th>Starter</th>
+                <th class="highlight-col">Growth</th>
+                <th>Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>SEO Strategy & Audit</td><td class="yes">✓</td><td class="yes highlight-col">✓</td><td class="yes">✓</td></tr>
+              <tr><td>Target Keywords</td><td>5</td><td class="highlight-col">25</td><td>Unlimited</td></tr>
+              <tr><td>Blog Posts / month</td><td>2</td><td class="highlight-col">8</td><td>Custom</td></tr>
+              <tr><td>Link Builds / month</td><td>5</td><td class="highlight-col">20</td><td>Unlimited</td></tr>
+              <tr><td>PPC Management</td><td class="no">✕</td><td class="yes highlight-col">✓</td><td class="yes">✓</td></tr>
+              <tr><td>Social Media</td><td class="no">✕</td><td class="highlight-col">2 profiles</td><td>All platforms</td></tr>
+              <tr><td>Account Manager</td><td class="no">✕</td><td class="yes highlight-col">✓</td><td>Dedicated Team</td></tr>
+              <tr><td>Reporting</td><td>Monthly</td><td class="highlight-col">Weekly</td><td>Real-time</td></tr>
+              <tr><td>CRO Audit</td><td class="no">✕</td><td class="yes highlight-col">✓</td><td class="yes">✓</td></tr>
+              <tr><td>International SEO</td><td class="no">✕</td><td class="no highlight-col">✕</td><td class="yes">✓</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </section>
 
-    <section style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Add-On Services</div>
-                <h2>Enhance Your Plan</h2>
-                <p>Additional services to supercharge your marketing</p>
-            </div>
-            <div class="grid grid-4">
-                <div class="card">
-                    <h3>Website Audit</h3>
-                    <div style="font-size: 2rem; font-weight: 900; color: var(--color-primary); margin: var(--spacing-md) 0;">$499</div>
-                    <p>Comprehensive analysis of your website's performance, SEO, and UX</p>
-                </div>
-                <div class="card">
-                    <h3>Content Creation</h3>
-                    <div style="font-size: 2rem; font-weight: 900; color: var(--color-primary); margin: var(--spacing-md) 0;">$299</div>
-                    <p>Professional blog posts, articles, or social media content (per piece)</p>
-                </div>
-                <div class="card">
-                    <h3>Video Marketing</h3>
-                    <div style="font-size: 2rem; font-weight: 900; color: var(--color-primary); margin: var(--spacing-md) 0;">$1,499</div>
-                    <p>Video production and YouTube optimization (per video)</p>
-                </div>
-                <div class="card">
-                    <h3>Email Campaigns</h3>
-                    <div style="font-size: 2rem; font-weight: 900; color: var(--color-primary); margin: var(--spacing-md) 0;">$799</div>
-                    <p>Professional email marketing campaigns with automation setup</p>
-                </div>
-            </div>
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
         </div>
+        <div class="faq-list">
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">Is there a setup fee? <span class="faq-arrow">▾</span></div>
+            <div class="faq-a">No setup fees ever. Your first month includes a comprehensive onboarding and audit at no extra charge.</div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">Can I cancel anytime? <span class="faq-arrow">▾</span></div>
+            <div class="faq-a">Yes. Month-to-month plans can be cancelled with 30 days notice. Annual plans include a 60-day satisfaction guarantee.</div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">How long until I see results? <span class="faq-arrow">▾</span></div>
+            <div class="faq-a">PPC results are typically visible within 2 weeks. SEO improvements generally show in 3-6 months depending on competition and domain authority.</div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">Do you work with any industry? <span class="faq-arrow">▾</span></div>
+            <div class="faq-a">We work with most industries including SaaS, e-commerce, finance, healthcare, legal and more. We'll be upfront if we're not the right fit.</div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section>
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">FAQ</div>
-                <h2>Frequently Asked Questions</h2>
-            </div>
-            <div class="container-sm">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <div class="card" style="margin-bottom: var(--spacing-md);">
-                        <h4>Can I change my plan later?</h4>
-                        <p>Yes! You can upgrade or downgrade your plan at any time. Changes take effect at the start of your next billing cycle.</p>
-                    </div>
-                    <div class="card" style="margin-bottom: var(--spacing-md);">
-                        <h4>What's included in the setup fee?</h4>
-                        <p>There's no setup fee! We believe in transparent pricing. All listed prices are your total monthly investment.</p>
-                    </div>
-                    <div class="card" style="margin-bottom: var(--spacing-md);">
-                        <h4>Do you offer refunds?</h4>
-                        <p>We offer a 30-day money-back guarantee. If you're not satisfied with our services within the first month, we'll provide a full refund.</p>
-                    </div>
-                    <div class="card">
-                        <h4>How long are the contracts?</h4>
-                        <p>All plans are month-to-month with no long-term contracts. You can cancel anytime with 30 days notice.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  </div>
 
-    <section style="background: var(--bg-secondary);">
-        <div class="container">
-            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-                <h2>Ready to Get Started?</h2>
-                <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: var(--spacing-xl);">Schedule a free consultation to discuss which plan is right for your business</p>
-                <a href="contact.html" class="btn btn-primary btn-lg">Schedule Consultation</a>
-            </div>
-        </div>
-    </section>
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="brand" style="font-size:1.3rem;"><div class="brand-icon" style="width:32px;height:32px;font-size:16px;">⚡</div>DigiBoost</a><p>Simple, transparent pricing with no hidden fees and no long-term lock-in.</p><div class="footer-social"><a href="#" class="social-btn">𝕏</a><a href="#" class="social-btn">in</a></div></div>
+      <div class="footer-col"><h4>Plans</h4><ul><li><a href="pricing.html">Starter</a></li><li><a href="pricing.html">Growth</a></li><li><a href="pricing.html">Enterprise</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 DigiBoost. All rights reserved.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+  </footer>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>DigiBoost</h3>
-                    <p>Empowering businesses to achieve extraordinary digital growth through innovative marketing strategies and proven SEO techniques.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="case-studies.html">Case Studies</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="login.html">Login</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="services.html">SEO</a></li>
-                        <li><a href="services.html">Social Media</a></li>
-                        <li><a href="services.html">PPC</a></li>
-                        <li><a href="services.html">Content</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Support</a></li>
-                    </ul>
-                </div>
-            </div>
-             <div class="footer-bottom">
-                <p>&copy; 2026 DigiBoost. All rights reserved.</p>
-                <div>
-                    <a style="color: red;" href="./404.html">(404 error)</a>
-                    <a style="color: red;" href="./comming-soon.html">(Comming soon)</a>
-                    <a href="#!">Privacy Policy</a>
-                    <a href="#!">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-  <script src="main.js"></script>
-    <script src="rtl.js"></script>
+  <script src="shared.js"></script>
+  <script>
+    let isAnnual = false;
+    function toggleBilling() {
+      isAnnual = !isAnnual;
+      document.getElementById('billing-toggle').classList.toggle('annual', isAnnual);
+      document.getElementById('monthly-lbl').classList.toggle('active', !isAnnual);
+      document.getElementById('annual-lbl').classList.toggle('active', isAnnual);
+      document.querySelectorAll('.price-val').forEach(el => {
+        const val = isAnnual ? el.dataset.annual : el.dataset.monthly;
+        if (val) el.textContent = Number(val).toLocaleString();
+      });
+    }
+    function toggleFaq(el) {
+      el.classList.toggle('open');
+    }
+  </script>
 </body>
 </html>

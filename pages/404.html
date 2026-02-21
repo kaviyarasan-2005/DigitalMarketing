@@ -1,37 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found - DigiBoost</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 – Page Not Found | DigiBoost</title>
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .error-page { min-height: calc(100vh - 70px); display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
+    .error-wrap { max-width: 600px; }
+    .error-big { font-family: 'Syne', sans-serif; font-size: clamp(6rem, 20vw, 12rem); font-weight: 800; line-height: 1; background: var(--grad1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; }
+    .error-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3rem; -webkit-text-fill-color: initial; animation: float 3s ease-in-out infinite; }
+    .error-title { font-size: clamp(1.5rem, 3vw, 2rem); margin: 20px 0 12px; }
+    .error-desc { color: var(--text-muted); max-width: 420px; margin: 0 auto 36px; line-height: 1.7; }
+    .error-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .error-bg { position: fixed; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,77,106,0.08) 0%, transparent 70%); pointer-events: none; }
+  </style>
 </head>
 <body>
-    <div class="error-page">
-        <div class="error-content" style="max-width: 600px;">
-            <h1 style="font-size: 8rem; line-height: 1; margin-bottom: var(--spacing-md);">404</h1>
-            <h2 style="margin-bottom: var(--spacing-md);">Page Not Found</h2>
-            <p style="font-size: 1.125rem; color: var(--text-secondary); margin-bottom: var(--spacing-xl);">
-                Oops! The page you're looking for doesn't exist. It might have been moved or deleted.
-            </p>
-            <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
-                <a href="index.html" class="btn btn-primary btn-lg">Go to Homepage</a>
-                <a href="contact.html" class="btn btn-secondary btn-lg">Contact Support</a>
-            </div>
-            
-            <div style="margin-top: var(--spacing-2xl); padding-top: var(--spacing-2xl); border-top: 1px solid var(--border-color);">
-                <h3 style="margin-bottom: var(--spacing-md);">Quick Links</h3>
-                <div style="display: flex; gap: var(--spacing-lg); justify-content: center; flex-wrap: wrap;">
-                    <a href="about.html" style="color: var(--text-secondary);">About Us</a>
-                    <a href="services.html" style="color: var(--text-secondary);">Services</a>
-                    <a href="pricing.html" style="color: var(--text-secondary);">Pricing</a>
-                    <a href="case-studies.html" style="color: var(--text-secondary);">Case Studies</a>
-                </div>
-            </div>
-        </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand"><div class="brand-icon">⚡</div>DigiBoost</a>
+      <nav><ul class="nav-links">
+        <li class="nav-dropdown"><a href="#">🏠 Home</a><div class="dropdown-menu"><a href="index.html" class="dd-home1"><span class="dd-icon">🌟</span>Home 1</a><a href="index2.html" class="dd-home2"><span class="dd-icon">🌊</span>Home 2</a></div></li>
+        <li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="contact.html">Contact</a></li>
+        <li class="nav-dropdown"><a href="#">📊 Dashboard</a><div class="dropdown-menu"><a href="user-dashboard.html" class="dd-user"><span class="dd-icon">👤</span>User</a><a href="admin-dashboard.html" class="dd-admin"><span class="dd-icon">🛡</span>Admin</a></div></li>
+      </ul></nav>
+      <div class="header-actions">
+        <button class="btn-rtl" id="rtl-btn" onclick="toggleRTL()">🌐</button>
+        <a href="login.html"><button class="btn-outline">Log In</button></a>
+        <a href="signup.html"><button class="btn-primary">Get Started</button></a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </div>
     </div>
-   <script src="main.js"></script>
-    <script src="rtl.js"></script>
+  </header>
+  <nav class="mobile-nav">
+    <a href="index.html">Home 1</a><a href="index2.html">Home 2</a><a href="about.html">About</a>
+    <a href="services.html">Services</a><a href="contact.html">Contact</a><a href="login.html">Login</a>
+  </nav>
+
+  <div class="page-wrap">
+    <div class="error-bg"></div>
+    <div class="error-page">
+      <div class="error-wrap">
+        <div class="error-big">
+          404
+          <div class="error-icon">🔍</div>
+        </div>
+        <h2 class="error-title">Oops! Page Not Found</h2>
+        <p class="error-desc">Looks like this page went off-page. Even the best SEO can't find it. Let's get you back on track and ranking again.</p>
+        <div class="error-links">
+          <a href="index.html"><button class="btn-lg btn-primary-lg">← Back to Home</button></a>
+          <a href="contact.html"><button class="btn-lg btn-ghost">Contact Support</button></a>
+        </div>
+        <div style="margin-top:48px;">
+          <p style="color:var(--text-dim);font-size:0.8rem;margin-bottom:16px;">Or try one of these pages:</p>
+          <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+            <a href="services.html" style="padding:8px 16px;background:var(--surface);border:1px solid var(--border);border-radius:50px;font-size:0.8rem;color:var(--text-muted);transition:var(--transition);" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-muted)'">Services</a>
+            <a href="pricing.html" style="padding:8px 16px;background:var(--surface);border:1px solid var(--border);border-radius:50px;font-size:0.8rem;color:var(--text-muted);transition:var(--transition);" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-muted)'">Pricing</a>
+            <a href="case-studies.html" style="padding:8px 16px;background:var(--surface);border:1px solid var(--border);border-radius:50px;font-size:0.8rem;color:var(--text-muted);transition:var(--transition);" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-muted)'">Case Studies</a>
+            <a href="about.html" style="padding:8px 16px;background:var(--surface);border:1px solid var(--border);border-radius:50px;font-size:0.8rem;color:var(--text-muted);transition:var(--transition);" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-muted)'">About Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="brand" style="font-size:1.3rem;"><div class="brand-icon" style="width:32px;height:32px;font-size:16px;">⚡</div>DigiBoost</a><p>Don't worry, the rest of our site works perfectly.</p></div>
+      <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="pricing.html">Pricing</a></li><li><a href="case-studies.html">Case Studies</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 DigiBoost. All rights reserved.</p><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+  </footer>
+
+  <script src="shared.js"></script>
 </body>
 </html>

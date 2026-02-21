@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - DigiBoost</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="error-page">
+        <div class="container-sm">
+            <div style="max-width: 500px; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: var(--spacing-xl);">
+                    <div class="logo" style="font-size: 2.5rem; margin-bottom: var(--spacing-lg);">DigiBoost</div>
+                    <!-- <h1 style="font-size: 2rem; margin-bottom: var(--spacing-sm);">Welcome Back</h1> -->
+                    <p style="color: var(--text-secondary);">Login to access your dashboard</p>
+                </div>
+
+                <div class="card" style="padding: var(--spacing-2xl);">
+                    <form>
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" required placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-input" required placeholder="Enter your password">
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" style="width: auto;">
+                                <span style="font-size: 0.9rem; color: var(--text-secondary);">Remember me</span>
+                            </label>
+                            <a href="#" style="font-size: 0.9rem;">Forgot password?</a>
+                        </div>
+                        <button type="button" onclick="window.location.href='user-dashboard.html'" class="btn btn-primary" style="width: 100%; margin-bottom: var(--spacing-md);">
+                            Sign In
+                        </button>
+                        <button type="button" onclick="window.location.href='admin-dashboard.html'" class="btn btn-secondary" style="width: 100%;">
+                            Admin Login
+                        </button>
+                    </form>
+
+                    <div style="text-align: center; margin-top: var(--spacing-lg); padding-top: var(--spacing-lg); border-top: 1px solid var(--border-color);">
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Don't have an account? <a href="signup.html">SignIn</a></p>
+                    </div>
+                </div>
+<!-- 
+                <div style="text-align: center; margin-top: var(--spacing-lg);">
+                    <a href="index.html" class="btn btn-outline">← Back to Home</a>
+                </div> -->
+            </div>
+        </div>
+    </div>   
+  <script src="main.js"></script>
+    <script src="rtl.js"></script>
+</body>
+</html>

@@ -1,247 +1,685 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Transform your digital presence with data-driven SEO strategies and cutting-edge marketing solutions">
-    <title>DigiBoost - Digital Marketing & SEO Agency</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DigiBoost – Ignite Your Digital Growth</title>
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* ===== HOME 1: Bold, Energetic, Dark Cosmic ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,77,106,0.25) 0%, transparent 70%),
+                  radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0,212,255,0.1) 0%, transparent 60%),
+                  var(--primary);
+    }
+
+    .hero-bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-orb-1 {
+      width: 400px; height: 400px;
+      background: rgba(255,77,106,0.2);
+      top: -100px; right: -100px;
+    }
+
+    .hero-orb-2 {
+      width: 300px; height: 300px;
+      background: rgba(0,212,255,0.15);
+      bottom: -50px; left: -50px;
+      animation-delay: -3s;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(255,77,106,0.1);
+      border: 1px solid rgba(255,77,106,0.3);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 28px;
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      animation: fadeUp 0.5s 0.1s ease both;
+    }
+
+    .hero-title span {
+      background: var(--grad1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 40px;
+      animation: fadeUp 0.5s 0.2s ease both;
+    }
+
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.5s 0.3s ease both;
+    }
+
+    .hero-cta .btn-lg {
+      background: var(--grad1);
+      color: #fff;
+      border: none;
+    }
+
+    .hero-cta .btn-lg:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(255,77,106,0.45);
+    }
+
+    .hero-cta .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .hero-cta .btn-ghost:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.5s 0.4s ease both;
+    }
+
+    .hero-stat-item { border-left: 2px solid rgba(255,77,106,0.4); padding-left: 16px; }
+    .rtl .hero-stat-item { border-left: none; border-right: 2px solid rgba(255,77,106,0.4); padding-left: 0; padding-right: 16px; }
+    .hero-stat-num { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--text); }
+    .hero-stat-lbl { font-size: 0.8rem; color: var(--text-muted); }
+
+    .hero-visual {
+      position: absolute;
+      right: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 45%;
+      max-width: 600px;
+    }
+
+    /* Floating Dashboard Card */
+    .hero-dashboard {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      margin: 20px;
+      box-shadow: var(--shadow);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .dash-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .dash-title { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+    .dash-badge { padding: 4px 10px; background: rgba(0,255,128,0.1); color: #00FF80; border-radius: 50px; font-size: 0.75rem; }
+
+    .dash-chart {
+      height: 80px;
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .bar {
+      flex: 1;
+      border-radius: 4px 4px 0 0;
+      background: var(--surface2);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bar::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: var(--grad1);
+      border-radius: 4px 4px 0 0;
+      animation: barGrow 1s ease forwards;
+    }
+
+    @keyframes barGrow { from { height: 0; } }
+    .bar:nth-child(1)::after { height: 40%; animation-delay: 0.1s; }
+    .bar:nth-child(2)::after { height: 65%; animation-delay: 0.15s; }
+    .bar:nth-child(3)::after { height: 45%; animation-delay: 0.2s; }
+    .bar:nth-child(4)::after { height: 80%; animation-delay: 0.25s; }
+    .bar:nth-child(5)::after { height: 60%; animation-delay: 0.3s; background: var(--grad2); }
+    .bar:nth-child(6)::after { height: 90%; animation-delay: 0.35s; }
+    .bar:nth-child(7)::after { height: 70%; animation-delay: 0.4s; }
+
+    .dash-metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .dash-metric { background: var(--surface2); border-radius: 8px; padding: 10px; }
+    .dm-num { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; }
+    .dm-lbl { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
+    .dm-trend { font-size: 0.7rem; color: #00FF80; }
+
+    /* Floating badge cards */
+    .float-card {
+      position: absolute;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow);
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .float-card-1 {
+      top: 15%;
+      left: -60px;
+      animation: float 4s 0.5s ease-in-out infinite;
+    }
+
+    .float-card-2 {
+      bottom: 20%;
+      left: -40px;
+      animation: float 4s 1s ease-in-out infinite;
+    }
+
+    /* Services Section */
+    .services-preview {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--grad1);
+      transform: scaleX(0);
+      transition: var(--transition);
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); border-color: rgba(255,77,106,0.2); }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .service-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .service-card p { color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; }
+    .service-link { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-size: 0.8rem; font-weight: 600; margin-top: 16px; transition: var(--transition); }
+    .service-link:hover { gap: 10px; }
+
+    /* Stats banner */
+    .stats-banner { background: var(--grad1); padding: 60px 0; }
+    .stats-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+    .stats-inner .s-num { font-family: 'Syne', sans-serif; font-size: 2.8rem; font-weight: 800; color: #fff; }
+    .stats-inner .s-lbl { color: rgba(255,255,255,0.8); font-size: 0.9rem; }
+
+    /* Testimonials */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .testi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+    }
+
+    .testi-card::before { content: '"'; position: absolute; top: 16px; right: 20px; font-family: 'Syne', sans-serif; font-size: 4rem; color: rgba(255,77,106,0.15); line-height: 1; }
+    .rtl .testi-card::before { right: auto; left: 20px; }
+
+    .testi-stars { color: var(--accent3); font-size: 0.9rem; margin-bottom: 12px; }
+    .testi-text { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 20px; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .testi-name { font-weight: 600; font-size: 0.9rem; }
+    .testi-role { color: var(--text-muted); font-size: 0.8rem; }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,77,106,0.15) 0%, transparent 70%);
+    }
+
+    .cta-section h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 20px; }
+    .cta-section p { color: var(--text-muted); max-width: 500px; margin: 0 auto 40px; }
+    .cta-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+    /* Brands */
+    .brands-section { padding: 40px 0; border-top: 1px solid var(--border); }
+    .brands-title { text-align: center; color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 28px; }
+    .brands-row { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .brand-logo { color: var(--text-dim); font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; transition: var(--transition); }
+    .brand-logo:hover { color: var(--text-muted); }
+
+    @media (max-width: 1024px) {
+      .hero-visual { display: none; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-             <nav>
-            <a href="index.html" class="logo">DigiBoost</a>
-            <ul class="nav-links">
-                <li class="dropdown">
-    <a href="#">Home ▾</a>
-    <ul class="dropdown-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index2.html">Home 2</a></li>
-    </ul>
-</li>
-                <!-- <li><a href="index.html">Home</a></li>
-                <li><a href="index2.html">Home2</a></li> -->
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="case-studies.html">Case Studies</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <!-- <li><a href="admin-dashboard.html">admin</a></li>
-                <li><a href="user-dashboard.html">user</a></li> -->
-                 <li class="dropdown">
-    <a href="#">Dashboard ▾</a>
-    <ul class="dropdown-menu">
-        <li><a href="user-dashboard.html">user</a></li>
-        <li><a href="admin-dashboard.html">admin</a></li>
-    </ul>
-</li>
-                <li><a href="login.html">Login</a></li>
-            </ul>
-            <div class="nav-controls">
-                <button class="rtl-toggle">🌍</button>
-                <button class="mobile-menu-toggle">☰</button>
-            </div>
-        </nav>
-    </header>
 
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-icon">⚡</div>
+        DigiBoost
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-dropdown">
+            <a href="#" class="active">🏠 Home</a>
+            <div class="dropdown-menu">
+              <a href="index.html" class="dd-home1"><span class="dd-icon">🌟</span> Home 1 – Bold</a>
+              <a href="index2.html" class="dd-home2"><span class="dd-icon">🌊</span> Home 2 – Minimal</a>
+            </div>
+          </li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="nav-dropdown">
+            <a href="#">📊 Dashboard</a>
+            <div class="dropdown-menu">
+              <a href="user-dashboard.html" class="dd-user"><span class="dd-icon">👤</span> User Dashboard</a>
+              <a href="admin-dashboard.html" class="dd-admin"><span class="dd-icon">🛡</span> Admin Dashboard</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-rtl" id="rtl-btn" onclick="toggleRTL()" title="Toggle RTL/LTR">🌐</button>
+        <a href="login.html"><button class="btn-outline">Log In</button></a>
+        <a href="signup.html"><button class="btn-primary">Get Started</button></a>
+        <div class="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav">
+    <a href="index.html">🏠 Home 1 – Bold</a>
+    <a href="index2.html">🏠 Home 2 – Minimal</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="contact.html">Contact</a>
+    <a href="user-dashboard.html">👤 User Dashboard</a>
+    <a href="admin-dashboard.html">🛡 Admin Dashboard</a>
+    <a href="login.html">Log In</a>
+    <a href="signup.html">Get Started →</a>
+  </nav>
+
+  <div class="page-wrap">
+
+    <!-- HERO -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">🚀 1 Digital Marketing Agency 2024</div>
-                <h1>Transform Your <span class="gradient-text">Digital Presence</span> with Data-Driven Results</h1>
-                <p>We help businesses dominate search rankings, multiply their online visibility, and convert traffic into revenue with proven SEO and marketing strategies.</p>
-                <div class="hero-cta">
-                    <a href="contact.html" class="btn btn-primary btn-lg">Get Free Audit</a>
-                    <a href="case-studies.html" class="btn btn-secondary btn-lg">View Case Studies</a>
-                </div>
+      <div class="hero-bg-grid"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">🚀 #1 Digital Marketing Agency 2024</div>
+          <h1 class="hero-title">
+            Ignite Your<br>
+            <span>Digital Growth</span><br>
+            With DigiBoost
+          </h1>
+          <p class="hero-sub">
+            Data-driven SEO, performance marketing and conversion strategies that transform clicks into customers. Proven results for 500+ brands worldwide.
+          </p>
+          <div class="hero-cta">
+            <a href="contact.html"><button class="btn-lg btn-primary-lg">Start Growing Today ↗</button></a>
+            <a href="case-studies.html"><button class="btn-lg btn-ghost">View Case Studies</button></a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat-item">
+              <div class="hero-stat-num"><span data-count="500" data-suffix="+">0+</span></div>
+              <div class="hero-stat-lbl">Clients Served</div>
             </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-num"><span data-count="340" data-suffix="%">0%</span></div>
+              <div class="hero-stat-lbl">Avg. Traffic Growth</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-num"><span data-count="98" data-suffix="%">0%</span></div>
+              <div class="hero-stat-lbl">Client Retention</div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="hero-visual">
+        <div style="position:relative;">
+          <div class="hero-dashboard">
+            <div class="dash-header">
+              <span class="dash-title">📈 SEO Performance</span>
+              <span class="dash-badge">▲ Live</span>
+            </div>
+            <div class="dash-chart">
+              <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+              <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+              <div class="bar"></div>
+            </div>
+            <div class="dash-metrics">
+              <div class="dash-metric">
+                <div class="dm-num gradient-text" data-count="12400" data-suffix="">0</div>
+                <div class="dm-lbl">Organic Visits</div>
+                <div class="dm-trend">▲ 23%</div>
+              </div>
+              <div class="dash-metric">
+                <div class="dm-num" style="color:var(--accent2);" data-count="847" data-suffix="">0</div>
+                <div class="dm-lbl">Keywords #1</div>
+                <div class="dm-trend">▲ 41%</div>
+              </div>
+              <div class="dash-metric">
+                <div class="dm-num" style="color:var(--accent3);" data-count="94" data-suffix="%">0%</div>
+                <div class="dm-lbl">Conversion</div>
+                <div class="dm-trend">▲ 8%</div>
+              </div>
+            </div>
+          </div>
+          <div class="float-card float-card-1">
+            <span style="font-size:20px;">🎯</span>
+            <div>
+              <div style="font-weight:600;font-size:0.85rem;">Campaign Live</div>
+              <div style="color:var(--text-muted);font-size:0.75rem;">3 new leads today</div>
+            </div>
+          </div>
+          <div class="float-card float-card-2">
+            <span style="font-size:20px;">⚡</span>
+            <div>
+              <div style="font-weight:600;font-size:0.85rem;">Page Speed 98</div>
+              <div style="color:#00FF80;font-size:0.75rem;">▲ Excellent Score</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3>500+</h3>
-                    <p>Successful Projects</p>
-                </div>
-                <div class="stat-item">
-                    <h3>98%</h3>
-                    <p>Client Satisfaction</p>
-                </div>
-                <div class="stat-item">
-                    <h3>15M+</h3>
-                    <p>Organic Traffic Generated</p>
-                </div>
-                <div class="stat-item">
-                    <h3>250%</h3>
-                    <p>Average ROI Increase</p>
-                </div>
-            </div>
+    <!-- Trusted Brands -->
+    <section class="brands-section">
+      <div class="container">
+        <p class="brands-title">Trusted by 500+ Companies</p>
+        <div class="brands-row">
+          <div class="brand-logo">TechCorp</div>
+          <div class="brand-logo">NovaMind</div>
+          <div class="brand-logo">Axiom</div>
+          <div class="brand-logo">PulseMedia</div>
+          <div class="brand-logo">DataFlow</div>
+          <div class="brand-logo">Vortex</div>
         </div>
+      </div>
     </section>
 
-    <section>
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Our Services</div>
-                <h2>Comprehensive Digital Marketing Solutions</h2>
-                <p>From SEO to social media, we offer everything you need to grow your online presence</p>
-            </div>
-            <div class="grid grid-3">
-                <div class="card">
-                    <div class="card-icon">🎯</div>
-                    <h3>SEO Optimization</h3>
-                    <p>Dominate search results with our advanced SEO strategies. We optimize every aspect of your website to rank higher and attract quality traffic.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📱</div>
-                    <h3>Social Media Marketing</h3>
-                    <p>Build a powerful social presence across all platforms. Engage your audience and convert followers into loyal customers.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">💰</div>
-                    <h3>PPC Advertising</h3>
-                    <p>Maximize ROI with targeted paid campaigns. We manage Google Ads, Facebook Ads, and more to drive instant results.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">✍️</div>
-                    <h3>Content Marketing</h3>
-                    <p>Attract and retain customers with compelling content. Our team creates blog posts, videos, and infographics that convert.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📧</div>
-                    <h3>Email Marketing</h3>
-                    <p>Nurture leads and boost conversions with personalized email campaigns. Automated sequences that work 24/7.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h3>Analytics & Reporting</h3>
-                    <p>Make data-driven decisions with comprehensive analytics. Track every metric that matters to your business growth.</p>
-                </div>
-            </div>
+    <!-- Services Preview -->
+    <section class="section services-preview">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge badge-accent" style="margin-bottom:16px;">Our Services</div>
+          <h2>Everything You Need to<br><span class="gradient-text">Dominate Search</span></h2>
+          <p>Full-stack digital marketing solutions designed to scale your business from zero to market leader.</p>
         </div>
+        <div class="services-grid">
+          <div class="service-card fade-up">
+            <div class="service-icon" style="background:rgba(255,77,106,0.15);">🔍</div>
+            <h3>SEO Optimization</h3>
+            <p>Technical audits, on-page optimization and link building strategies that rank you #1.</p>
+            <a href="services.html" class="service-link">Learn more →</a>
+          </div>
+          <div class="service-card fade-up">
+            <div class="service-icon" style="background:rgba(0,212,255,0.12);">💰</div>
+            <h3>PPC & Paid Ads</h3>
+            <p>ROI-focused Google & Meta ad campaigns with smart bidding and A/B testing.</p>
+            <a href="services.html" class="service-link">Learn more →</a>
+          </div>
+          <div class="service-card fade-up">
+            <div class="service-icon" style="background:rgba(255,184,0,0.12);">✍️</div>
+            <h3>Content Marketing</h3>
+            <p>Engaging, SEO-rich content that attracts, converts and retains your ideal customers.</p>
+            <a href="services.html" class="service-link">Learn more →</a>
+          </div>
+          <div class="service-card fade-up">
+            <div class="service-icon" style="background:rgba(128,90,213,0.15);">📱</div>
+            <h3>Social Media</h3>
+            <p>Strategic social media management that builds brand awareness and community.</p>
+            <a href="services.html" class="service-link">Learn more →</a>
+          </div>
+          <div class="service-card fade-up">
+            <div class="service-icon" style="background:rgba(0,255,128,0.1);">📧</div>
+            <h3>Email Marketing</h3>
+            <p>Automated email sequences with 40%+ open rates that drive repeat purchases.</p>
+            <a href="services.html" class="service-link">Learn more →</a>
+          </div>
+          <div class="service-card fade-up">
+            <div class="service-icon" style="background:rgba(255,77,106,0.12);">📊</div>
+            <h3>Analytics & CRO</h3>
+            <p>Deep analytics, heatmaps and conversion optimization to maximise every visit.</p>
+            <a href="services.html" class="service-link">Learn more →</a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Why Choose Us</div>
-                <h2>The DigiBoost Advantage</h2>
-                <p>Here's what sets us apart from other agencies</p>
-            </div>
-            <div class="grid grid-2">
-                <div class="card">
-                    <h3>🏆 Proven Track Record</h3>
-                    <p>Over 500 successful campaigns with an average 250% ROI increase. Our results speak for themselves.</p>
-                </div>
-                <div class="card">
-                    <h3>🔬 Data-Driven Approach</h3>
-                    <p>Every decision is backed by real data. We analyze, test, and optimize continuously for maximum performance.</p>
-                </div>
-                <div class="card">
-                    <h3>👥 Dedicated Team</h3>
-                    <p>Work directly with experienced strategists, not junior staff. Your success is our obsession.</p>
-                </div>
-                <div class="card">
-                    <h3>⚡ Fast Results</h3>
-                    <p>See improvements in weeks, not months. Our proven processes accelerate your growth trajectory.</p>
-                </div>
-            </div>
+    <!-- Stats Banner -->
+    <section class="stats-banner">
+      <div class="container">
+        <div class="stats-inner">
+          <div>
+            <div class="s-num" data-count="500" data-suffix="+">500+</div>
+            <div class="s-lbl">Happy Clients</div>
+          </div>
+          <div>
+            <div class="s-num" data-count="1200" data-suffix="+">1200+</div>
+            <div class="s-lbl">Projects Completed</div>
+          </div>
+          <div>
+            <div class="s-num" data-count="340" data-suffix="%">340%</div>
+            <div class="s-lbl">Avg. Traffic Growth</div>
+          </div>
+          <div>
+            <div class="s-num" data-count="10" data-suffix=" yrs">10 yrs</div>
+            <div class="s-lbl">Industry Experience</div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section>
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Testimonials</div>
-                <h2>Trusted by Industry Leaders</h2>
-                <p>Don't just take our word for it - hear from our satisfied clients</p>
-            </div>
-            <div class="grid grid-3">
-                <div class="card">
-                    <p style="font-size: 1.1rem; margin-bottom: var(--spacing-md);">"DigiBoost transformed our online presence. We saw a 400% increase in organic traffic within 6 months. Their team is exceptional!"</p>
-                    <h4>Sarah Johnson</h4>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">CEO, TechFlow Inc.</p>
-                </div>
-                <div class="card">
-                    <p style="font-size: 1.1rem; margin-bottom: var(--spacing-md);">"The ROI from their PPC campaigns exceeded all expectations. They truly understand digital marketing at a deep level."</p>
-                    <h4>Michael Chen</h4>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Marketing Director, GrowthCo</p>
-                </div>
-                <div class="card">
-                    <p style="font-size: 1.1rem; margin-bottom: var(--spacing-md);">"Professional, responsive, and results-driven. DigiBoost helped us dominate our niche market in record time."</p>
-                    <h4>Emily Rodriguez</h4>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Founder, EcoStore</p>
-                </div>
-            </div>
+    <!-- Testimonials -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge badge-gold" style="margin-bottom:16px;">Testimonials</div>
+          <h2>What Our Clients <span class="gradient-text">Say</span></h2>
         </div>
+        <div class="testimonials-grid">
+          <div class="testi-card fade-up">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">DigiBoost transformed our organic traffic from 2,000 to 45,000 monthly visitors in just 8 months. Their SEO strategy is second to none.</p>
+            <div class="testi-author">
+              <div class="testi-avatar" style="background:rgba(255,77,106,0.2);">👨‍💼</div>
+              <div><div class="testi-name">James Morrison</div><div class="testi-role">CEO, TechFlow Inc.</div></div>
+            </div>
+          </div>
+          <div class="testi-card fade-up">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">Our PPC ROAS jumped from 2x to 8x within 3 months. The team's data-driven approach to paid media is truly exceptional.</p>
+            <div class="testi-author">
+              <div class="testi-avatar" style="background:rgba(0,212,255,0.15);">👩‍💼</div>
+              <div><div class="testi-name">Sarah Chen</div><div class="testi-role">Marketing Director, Axiom</div></div>
+            </div>
+          </div>
+          <div class="testi-card fade-up">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-text">We ranked #1 for 200+ competitive keywords. DigiBoost doesn't just promise results — they deliver and exceed expectations.</p>
+            <div class="testi-author">
+              <div class="testi-avatar" style="background:rgba(255,184,0,0.15);">👨‍💻</div>
+              <div><div class="testi-name">Rafael Santos</div><div class="testi-role">Founder, NovaMind</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section style="background: var(--bg-secondary);">
-        <div class="container">
-            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-                <h2>Ready to Dominate Your Market?</h2>
-                <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: var(--spacing-xl);">Get a free website audit and discover how we can 10x your online presence</p>
-                <div class="hero-cta">
-                    <a href="contact.html" class="btn btn-primary btn-lg">Get Free Audit</a>
-                    <a href="pricing.html" class="btn btn-outline btn-lg">View Pricing</a>
-                </div>
-            </div>
+    <!-- CTA -->
+    <section class="section cta-section">
+      <div class="container">
+        <div class="badge badge-accent" style="margin-bottom:20px;">Ready to Grow?</div>
+        <h2>Launch Your <span class="gradient-text">Growth Strategy</span><br>Today</h2>
+        <p>Book a free 30-minute strategy call and discover exactly how DigiBoost can transform your digital presence.</p>
+        <div class="cta-btns">
+          <a href="contact.html"><button class="btn-lg btn-primary-lg">Book Free Strategy Call →</button></a>
+          <a href="pricing.html"><button class="btn-lg btn-ghost">View Pricing</button></a>
         </div>
+      </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>DigiBoost</h3>
-                    <p>Empowering businesses to achieve extraordinary digital growth through innovative marketing strategies and proven SEO techniques.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="case-studies.html">Case Studies</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="login.html">Login</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="services.html">SEO</a></li>
-                        <li><a href="services.html">Social Media</a></li>
-                        <li><a href="services.html">PPC</a></li>
-                        <li><a href="services.html">Content</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Support</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 DigiBoost. All rights reserved.</p>
-                <div>
-                    <a style="color: red;" href="./404.html">(404 error)</a>
-                    <a style="color: red;" href="./comming-soon.html">(Comming soon)</a>
-                    <a href="#!">Privacy Policy</a>
-                    <a href="#!">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+  </div>
 
-  <script src="main.js"></script>
-    <script src="rtl.js"></script>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" style="font-size:1.3rem;">
+          <div class="brand-icon" style="width:32px;height:32px;font-size:16px;">⚡</div>
+          DigiBoost
+        </a>
+        <p>Empowering brands through data-driven digital marketing and SEO strategies that deliver measurable results.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn">𝕏</a>
+          <a href="#" class="social-btn">in</a>
+          <a href="#" class="social-btn">f</a>
+          <a href="#" class="social-btn">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">SEO Optimization</a></li>
+          <li><a href="services.html">PPC Advertising</a></li>
+          <li><a href="services.html">Content Marketing</a></li>
+          <li><a href="services.html">Social Media</a></li>
+          <li><a href="services.html">Email Marketing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="coming-soon.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">API Status</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 DigiBoost. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="shared.js"></script>
 </body>
 </html>
